@@ -25,9 +25,16 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		console.log("test");
-		var hasAccount = $("hasAccount").text();
+		var hasAccount = '${hasAccount}';
+		var hasUsername = '${hasUsername}';
 		console.log(hasAccount);
+		console.log(hasUsername);
+		if (hasAccount == "true") {
+			$("#legal-account").text("此账号已注册");
+		}
+		if (hasUsername == "true") {
+			$("#legal-username").text("用户名已注册")
+		}
 	});
 </script>
 
@@ -52,12 +59,14 @@
 					name="account" type="text" class="form-control"
 					placeholder="作为账号用于登录" aria-describedby="sizing-addon2">
 			</div>
-			<span id="legal-account"></span> <br>
+			<div class="signuplegal" id="legal-account"></div>
+			<br>
 			<div class="input-group">
 				<span class="input-group-addon" id="sizing-addon2">用户名</span> <input
 					name="username" type="text" class="form-control" placeholder="用户名"
-					aria-describedby="sizing-addon2"><span id="legal-username"></span>
+					aria-describedby="sizing-addon2">
 			</div>
+				<div class="signuplegal" id="legal-username"></div>
 			<br>
 			<div class="input-group">
 				<span class="input-group-addon" id="sizing-addon2">密码</span> <input
@@ -69,7 +78,7 @@
 				<button type="submit" class="btn btn-default">注册</button>
 			</div>
 			<br>
-			</form>
+		</form>
 	</div>
 </body>
 </html>

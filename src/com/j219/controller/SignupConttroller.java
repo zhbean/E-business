@@ -33,6 +33,8 @@ public class SignupConttroller {
 		ModelAndView mv = new ModelAndView();
 		
 		if (!hasAccount && !hasUsername) {
+			
+			
 			System.out.println("×¢²á³É¹¦");
 			return new ModelAndView("redirect:/Login.jsp");
 		}
