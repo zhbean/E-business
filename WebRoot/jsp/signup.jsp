@@ -31,7 +31,7 @@
 		</div>
 		<div id="e-logo-title">欢迎注册</div>
 		<div id="signuped">
-			已有账号？<a href="#">请登录</a>
+			已有账号？<a href="<%=basePath%>Login.jsp">请登录</a>
 		</div>
 	</div>
 	<div class="input-group" id="signup-body">
