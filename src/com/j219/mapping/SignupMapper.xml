@@ -11,5 +11,9 @@
 	<select id="hasUsername" resultType="com.j219.model.Signup">
 		select * from users where username=#{username}
 	</select>
+	
+	<insert id="newSignup" parameterType="com.j219.model.Signup">
+		insert into users(username,account,password) values(#{username},#{account},#{password})
+	</insert>
 
 </mapper>

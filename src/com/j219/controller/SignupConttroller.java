@@ -20,6 +20,7 @@ public class SignupConttroller {
 
 		System.out.println(account);
 		System.out.println(username);
+		System.out.println(password);
 		
 		if (signupDao.hasAccount(account)!=null) {
 			hasAccount = true;
@@ -33,10 +34,16 @@ public class SignupConttroller {
 		ModelAndView mv = new ModelAndView();
 		
 		if (!hasAccount && !hasUsername) {
-			
-			
-			System.out.println("×¢²á³É¹¦");
-			return new ModelAndView("redirect:/Login.jsp");
+			try {
+				signupDao.newSignup(username, account, password);
+				System.out.println("×¢²á³É¹¦");
+				return new ModelAndView("redirect:/Login.jsp");
+			} catch (Exception e) {
+				System.out.println(e);
+				System.out.println("²åÈëÊ§°Ü");
+				mv.setViewName("signup");
+				return mv;
+			}
 		}
 		else {
 			System.out.println("×¢²áÊ§°Ü");
