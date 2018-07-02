@@ -17,8 +17,6 @@ import com.alibaba.fastjson.JSON;
 import com.j219.dao.ProfileDao;
 import com.j219.model.Profile;
 
-
-
 @Controller
 public class ProfileComtroller {
 
@@ -29,7 +27,9 @@ public class ProfileComtroller {
 	public void myprofile(String account, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/json;charset=UTF-8");
-
+		request.setCharacterEncoding("utf-8");
+		response.setHeader("Content-Type", "text/html;charset=utf-8");
+		
 		System.out.println(account);
 
 		try {
