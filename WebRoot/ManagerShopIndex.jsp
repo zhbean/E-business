@@ -140,9 +140,9 @@
 		</div>
 		
 		<div class="OutListClass" style="margin-left:1500px;width:200px;height:50px">
-			 <input id="spec_no" type="text" class="form-control" placeholder="spec_no">
-			  <input id="price" type="text" class="form-control" placeholder="price">
-			  <input id="sku" type="text" class="form-control" placeholder="sku">
+			 <input id="spec_no" type="text" class="form-control" placeholder="商品详情号">
+			  <input id="price" type="text" class="form-control" placeholder="商品价格">
+			  <input id="sku" type="text" class="form-control" placeholder="商品库存">
 			<button id="BtmodifyGoods" class="btn btn-primary"  style="width:200px;height:50px;" onclick="modifyGoodsInf()">修改商品信息</button>
 			</div>
 
@@ -155,6 +155,10 @@
 
 	<script>
 		$("#ShowGoodsList").click(function() {
+			$("#BtmodifyGoods").show();
+			$("#spec_no").show();
+			$("#price").show();
+			$("#sku").show();
 			$("#jqTurn").empty();
 			$("#jqTurn").append('<table id="jqlist"></table><div id="jqGridPager"></div>');
 			$("#jqlist").jqGrid({
@@ -239,7 +243,7 @@
 								goods_no : result[i].goods_no,
 								goods_name : result[i].goods_name,
 								goods_discount : result[i].goods_discount,
-								goods_status : result[i].goods_status,
+								goods_status : "在售商品",
 								sort_no : result[i].sort_no,
 								brand_no : result[i].brand_no,
 								spec_no : result[i].spec_no,
@@ -264,6 +268,10 @@
 	
 	<script>
 		$("#ShowUsersList").click(function() {
+			$("#BtmodifyGoods").hide();
+			$("#spec_no").hide();
+			$("#price").hide();
+			$("#sku").hide();
 			$("#jqTurn").empty();
 			$("#jqTurn").append('<table id="jqlist"></table><div id="jqGridPager"></div>');
 			$("#jqlist").jqGrid({
@@ -340,7 +348,6 @@
 					data : {},
 					dataType : 'json', //返回数据形式为json
 					success : function(result) {
-						console.log(result);
 						for (var i = 0; i < Object.keys(result).length; i++) {
 							gridArrayData.push({
 								username : result[i].username,
