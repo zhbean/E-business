@@ -3,6 +3,6 @@
 <mapper namespace="com.j219.dao.ModifyGoodsInfMapper">
 
     <update id="modifyGoodsInfMapper">
-        update goods_detail set price=#{price},sku=#{sku} where spec_no=#{spec_no}
+        update goods_details set price=#{price},sku=#{sku} where spec_no=#{spec_no}
     </update> 
 </mapper>
