@@ -2,8 +2,8 @@ package com.j219.dao;
 
 import java.util.List;
 
-import com.j219.model.Goods;
+import com.j219.model.GoodsDetail;
 
 public interface FindGoodsListMapper {
-	public List<Goods> getGoodsList();
+	public List<GoodsDetail> getGoodsList();
 }
