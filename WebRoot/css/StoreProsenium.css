@@ -37,6 +37,13 @@
 	width: 1000px;
 	float: right;
 }
+.sec-t{
+	
+	width:483px;
+}
+.z{
+	float:right;
+}
 
 .se {
 	margin-top: 50px;
@@ -54,11 +61,13 @@
 
 .fl {
 	margin-top: 10px;
-	height: 480px;
+	height: 470px;
 	width: 190px;
 	background-color: #f0f3ef;
 }
-
+.x{
+	margin-top: 10px;
+}
 .u {
 	float: left;
 }
@@ -102,6 +111,10 @@
 .dl-bf {
 	margin-left: 20px;
 	float: left;
+}
+.dl-u{
+	height:34px;
+	width:190px;
 }
 
 .dl-br {

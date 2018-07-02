@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.j219.dao.GoodsTwoDao">
+    <resultMap type="com.j219.model.GoodsTwo" id="Map">
+        <id property="id" column="id" />
+        <result property="goodsname" column="goods_name" />
+       
+    </resultMap>
+    <select id="getGoodsname" parameterType="java.lang.String"
+        resultMap="Map">
+        select * from goods where goods_name LIKE '%${goodsname}%'
+    </select>
+    
+</mapper>

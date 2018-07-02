@@ -11,9 +11,24 @@
 
 <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/Login.js"></script>
 
 </head>
-
+<script type="text/javascript">
+	$(document).ready(function(){
+	
+	$("#LoginButton").click(function(){Login();});
+	
+});
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	var a="<%=request.getParameter("LoginError") %>";
+	if(a!="null"&&a!=""){$("#LoginError").text(a)}
+	
+	
+});
+</script>
 <body class="qu">
 	<div>
 		<div class="page-header">
@@ -28,20 +43,18 @@
 				<br>
 			</div>
 			<div class="form-group">
-				<input type="text" class="form-control" name="username"
+				<input type="text" class="form-control" id="account"
 					placeholder="账号">
 			</div>
 			<div class="form-group">
-				<input type="password" class="form-control" name="password"
+				<input type="password" class="form-control" id="password"
 					placeholder="密码">
 			</div>
-			<br>
-			<button type="button" class="btn btn-info btn-lg c">登录</button>
-
-
-			<button type="button" class="btn btn-warning btn-lg a">注册</button>
-
-		</div>
+			<p id="LoginError" class="s"></p>
+			<button type="button" id="LoginButton" class="btn btn-info btn-lg c">登录</button>
+			<button type="button" class="btn btn-warning btn-lg a">注册</button><br>
+			</div>
+		
 	</div>
 </body>
 </html>
