@@ -5,8 +5,11 @@
         <id property="id" column="id" />
         <result property="userAccount" column="account" />
     </resultMap>
+    
+    
     <select id="getAccountByUsername" parameterType="java.lang.String"
         resultMap="userMap">
         select * from users where username=#{username}
     </select>
+    
 </mapper>

@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+
+.profile-nav{
+	heught:250px;
+}
+
+.my-body{
+	margin:0 auto;
+	min-height:50px;
+	width:80%;
+	display:flex;
+	justify-content:space-around;
+	align-items: center;
+	backgroung-color:#fbdd8d;
+	flex-direction: row;
+}

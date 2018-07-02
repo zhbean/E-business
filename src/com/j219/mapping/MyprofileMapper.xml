@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.j219.dao.ProfileDao">
+
+	<select id="findProfile" resultType="com.j219.model.Profile">
+		select * from users where account=#{account}
+	</select>
+	
+	<update id="setProfile" parameterType="com.j219.model.Profile">
+		update users set username=#{username},mem_sex=#{sex} where account=#{account}
+	</update>
+
+</mapper>
