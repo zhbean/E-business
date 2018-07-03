@@ -71,6 +71,10 @@ public class MyAddressController {
 	@RequestMapping(value="/updateaddress")
 	public ModelAndView updateaddress(String address_no,String address_details,String area, String buyer_name,String phone_number, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		System.out.println(address_no);
+		System.out.println(address_details);
+		System.out.println(area);
+		System.out.println(buyer_name);
+		System.out.println(phone_number);
 		try {
 			myAddressDao.updateAddress(address_no,address_details,area,buyer_name, phone_number);
 			System.out.println("修改成功");
