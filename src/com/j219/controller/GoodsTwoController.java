@@ -220,6 +220,27 @@ public class GoodsTwoController {
 			e.printStackTrace();
 		}
 	}
+	@RequestMapping("/getcartgoods")
+	public void getCartGoods(HttpServletRequest req,HttpServletResponse res,String account) throws IOException{
+
+		System.out.println("调用controller");
+		 List<GoodsTwo> cartlist=new ArrayList<GoodsTwo>();
+		 cartlist=goodsTwoDao.getCartGoods(account);
+		
+		PrintWriter out;
+		try {
+			res.setContentType("text/json;charset=UTF-8");
+			out = res.getWriter();
+			//ajax接收到商品数组
+			out.write(JSON.toJSONString(cartlist));
+			System.out.print(JSON.toJSONString(cartlist));
+			System.out.print("JSON后输出");
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
 
 

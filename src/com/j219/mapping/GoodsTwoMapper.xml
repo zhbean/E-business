@@ -17,6 +17,8 @@
   		<result property="area" column="area" />
   		<result property="addrsdetail" column="address_detail" />
   		<result property="addrsno" column="address_no" />
+  		<result property="goodscount" column="goods_count" />
+  		<result property="sku" column="sku" />
     </resultMap>
     <select id="getGoodsname" parameterType="java.lang.String"
         resultMap="Map">
@@ -67,5 +69,13 @@
     <select id="getaddress" parameterType="java.lang.String"
         resultMap="Map">
         select area,address_detail,address_no from user_address where account=#{account}
+    </select>
+    <select id="getCartGoods" parameterType="java.lang.String"
+        resultMap="Map">
+        select cart_details.spec_no,goods_count,price,sku,spec_type,goods_name,goods_img
+ 		from goods_details, cart_details ,spec,goods
+ 		where account=#{account} and goods_details.spec_no=cart_details.spec_no 
+ 		and goods_details.spec_no=spec.spec_no
+  		and goods.goods_no=spec.goods_no
     </select>
 </mapper>

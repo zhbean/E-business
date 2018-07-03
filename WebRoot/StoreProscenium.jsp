@@ -321,6 +321,10 @@ $(document).ready(function(){
 			}
 			// set the new data
 		});
+		$("#cartButton").click(function(){
+			
+			window.open('cart.jsp');
+		});
 });
 </script>
 </html>

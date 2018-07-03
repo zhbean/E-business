@@ -15,6 +15,21 @@ public class GoodsTwo {
 	private String area;
 	private String addrsdetail;
 	private String addrsno;
+	private int goodscount;
+	private int sku;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public String getGoodsname() {
 		return goodsname;
@@ -126,6 +141,22 @@ public class GoodsTwo {
 
 	public void setAddrsno(String addrsno) {
 		this.addrsno = addrsno;
+	}
+
+	public int getGoodscount() {
+		return goodscount;
+	}
+
+	public void setGoodscount(int goodscount) {
+		this.goodscount = goodscount;
+	}
+
+	public int getSku() {
+		return sku;
+	}
+
+	public void setSku(int sku) {
+		this.sku = sku;
 	}
 
 	
