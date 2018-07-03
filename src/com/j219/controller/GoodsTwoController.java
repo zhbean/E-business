@@ -135,6 +135,91 @@ public class GoodsTwoController {
 			e.printStackTrace();
 		}
 	}
+	@RequestMapping("/goodsdetails")
+	public void getGoodsDetails(HttpServletRequest req,HttpServletResponse res,String account) throws IOException{
+
+		System.out.println("调用controller");
+		 List<GoodsTwo> goodsDetailslist=new ArrayList<GoodsTwo>();
+		 goodsDetailslist=goodsTwoDao.getGoodDetails();
+		
+		
+		PrintWriter out;
+		try {
+			res.setContentType("text/json;charset=UTF-8");
+			out = res.getWriter();
+			//ajax接收到商品数组
+			out.write(JSON.toJSONString(goodsDetailslist));
+			System.out.print(JSON.toJSONString(goodsDetailslist));
+			System.out.print("JSON后输出");
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	@RequestMapping("/getgoods")
+	public void getGoodsbygoodsname(HttpServletRequest req,HttpServletResponse res,String goodsname) throws IOException{
+
+		System.out.println("调用controller");
+		 List<GoodsTwo> goodslist=new ArrayList<GoodsTwo>();
+		 goodslist=goodsTwoDao.getGoodDetailsBygoodsname(goodsname);
+		
+		PrintWriter out;
+		try {
+			res.setContentType("text/json;charset=UTF-8");
+			out = res.getWriter();
+			//ajax接收到商品数组
+			out.write(JSON.toJSONString(goodslist));
+			System.out.print(JSON.toJSONString(goodslist));
+			System.out.print("JSON后输出");
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	@RequestMapping("/getprice")
+	public void getPrice(HttpServletRequest req,HttpServletResponse res,String specno) throws IOException{
+
+		System.out.println("调用controller");
+		 List<GoodsTwo> pricelist=new ArrayList<GoodsTwo>();
+		 pricelist=goodsTwoDao.getGoodsPrice(specno);
+		
+		PrintWriter out;
+		try {
+			res.setContentType("text/json;charset=UTF-8");
+			out = res.getWriter();
+			//ajax接收到商品数组
+			out.write(JSON.toJSONString(pricelist));
+			System.out.print(JSON.toJSONString(pricelist));
+			System.out.print("JSON后输出");
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	@RequestMapping("/getaddress")
+	public void getAddress(HttpServletRequest req,HttpServletResponse res,String account) throws IOException{
+
+		System.out.println("调用controller");
+		 List<GoodsTwo> aderslist=new ArrayList<GoodsTwo>();
+		 aderslist=goodsTwoDao.getaddress(account);
+		
+		PrintWriter out;
+		try {
+			res.setContentType("text/json;charset=UTF-8");
+			out = res.getWriter();
+			//ajax接收到商品数组
+			out.write(JSON.toJSONString(aderslist));
+			System.out.print(JSON.toJSONString(aderslist));
+			System.out.print("JSON后输出");
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
 
 

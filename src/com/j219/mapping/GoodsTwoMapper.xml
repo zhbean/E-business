@@ -7,8 +7,16 @@
       	<result property="ordersCount" column="ordersCount" />
         <result property="torderCount" column="torderCount" />
         <result property="bulletinstit" column="bulletin_title" />
-  		 <result property="bulletins" column="bulletin_content" />
+  		<result property="bulletins" column="bulletin_content" />
         <result property="cartCount" column="CartCount" />
+        <result property="goodsimgadrs" column="goods_img" />
+  		<result property="brandname" column="brand_name" />
+  		<result property="spectype" column="spec_type" />
+  		<result property="specno" column="spec_no" />
+  		<result property="price" column="price" />
+  		<result property="area" column="area" />
+  		<result property="addrsdetail" column="address_detail" />
+  		<result property="addrsno" column="address_no" />
     </resultMap>
     <select id="getGoodsname" parameterType="java.lang.String"
         resultMap="Map">
@@ -35,5 +43,29 @@
         resultMap="Map">
         select count(*) CartCount from cart_details where account=#{account}
     </select>
-    
+     <select id="getGoodDetails" parameterType="java.lang.String"
+        resultMap="Map">
+        select min(price) price ,goods.goods_img,goods.goods_name 
+		from goods,goods_details,spec 
+		where goods.goods_no=spec.goods_no and spec.spec_no=goods_details.spec_no 
+		group by goods.goods_no,goods.goods_name,goods.goods_img
+    </select>
+     <select id="getGoodDetailsBygoodsname" parameterType="java.lang.String"
+        resultMap="Map">
+        select spec.spec_no, goods_img,brand_name,spec_type,price 
+        from goods_details, spec,goods,brands 
+		where goods_name=#{goodsname} and 
+		goods.brand_no=brands.brand_no and 
+		spec.goods_no=goods.goods_no and 
+		goods_details.spec_no=spec.spec_no
+    </select>
+     <select id="getGoodsPrice" parameterType="java.lang.String"
+        resultMap="Map">
+        select price from goods_details, spec 
+		where  goods_details.spec_no=spec.spec_no and spec.spec_no=#{specno}
+    </select>
+    <select id="getaddress" parameterType="java.lang.String"
+        resultMap="Map">
+        select area,address_detail,address_no from user_address where account=#{account}
+    </select>
 </mapper>

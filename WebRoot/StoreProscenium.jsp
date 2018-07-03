@@ -289,10 +289,40 @@ $(document).ready(function(){
 				</div>
 			</div>
 		</div>
+		<div class="ds">
+			<div class="ds-title"><h2 class="ds-t">商品总览</h2></div>
+			<div class="ds-gods">
+				<ul class="list-unstyled list-inline" id="ulgoods">
+					
 
+				</ul>
+			</div>
+			<div class="btm"><h1> 已达最底层</h1></div>
+		</div>
+		
 	</div>
+	
 </body>
 
+<script type="text/javascript">
+$(document).ready(function(){
+	$.ajax({
+		type : 'post',
+		async : false,
+		url : "goodsdetails",
+		data : {},
+		dataType : 'json', //返回数据形式为json
+		success : function(result) {
+			for(var i = 0; i < Object.keys(result).length; i++){
+			$("#ulgoods").append("<li class='ds-gods-l'><a href=goodsdetails.jsp?goodsname="+result[i].goodsname+" target=_blank>"+
+			"<div class='ds-gods-img-di'><img src="+result[i].goodsimgadrs+" class='img-thumbnail ds-gods-img'></div>"+
+			"<div class='ds-gods-nd'>=<p><h2>"+result[i].goodsname+"</h2></p><h4 class='b'><i>¥</i><span>"+result[i].price+"</span></h4></div></a></li>");
+			}
+			}
+			// set the new data
+		});
+});
+</script>
 </html>
 
 

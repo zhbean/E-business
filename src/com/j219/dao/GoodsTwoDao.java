@@ -14,4 +14,8 @@ public interface GoodsTwoDao {
 	public List<GoodsTwo> getbulltinstitle();
 	public List<GoodsTwo> getbulltins(@Param("bulletinstit") String bulletinstit);
 	public GoodsTwo getCartCountByAccount(@Param("account") String account);
+	public List<GoodsTwo> getGoodDetails();
+	public List<GoodsTwo> getGoodDetailsBygoodsname(@Param("goodsname") String goodsname);
+	public List<GoodsTwo> getGoodsPrice(@Param("specno") String specno);
+	public List<GoodsTwo> getaddress(@Param("account") String account);
 }

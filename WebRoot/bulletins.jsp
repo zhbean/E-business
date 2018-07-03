@@ -25,9 +25,19 @@ $(document).ready(function(){
 	
 	$("#selord").click(function(){
 	getcount(account);
-		
-		
+
 	});
+	$.ajax({
+		type : 'post',
+		async : false,
+		url : "CartCount",
+		data : {account:account},
+		dataType : 'json', //返回数据形式为json
+		success : function(result) {
+			$("#CartCount").text(result);
+			}
+			// set the new data
+		});
 	}
 	else{
 	$("#UserLogin").append("<a href=Login.jsp><span id='user'class='b'>登录/注册</span></a>");
@@ -155,7 +165,7 @@ $(document).ready(function(){
 					<div class="col-xs-2 ">
 						<button class="btn btn-default ">
 							<span class="glyphicon glyphicon-shopping-cart "></span> <span>我的购物车</span><span
-								class="badge ">0</span>
+								class="badge " id="CartCount">0</span>
 						</button>
 					</div>
 
