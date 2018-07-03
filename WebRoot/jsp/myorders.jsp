@@ -21,7 +21,7 @@
 <link rel="stylesheet" type="text/css" href="css/profile.css">
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
-<script type="text/javascript" src="js/defaults-zh_CN.js"></script>
+
 
 <script type="text/ecmascript" src="js/grid.locale-cn.js"></script>
 
@@ -218,7 +218,13 @@
 							label : '商品图片',
 							name : 'goods_img',
 							key : true,
-							width : 50
+							width : 50,
+							formatter : function(cellvalue, options, rowObject) {
+								// do something here
+								console.log(cellvalue)
+								var new_format_value='<a href="<%=basePath%>StoreProscenium.jsp"><img alt="杂货铺" src="'+cellvalue+'" height=50px></a>'
+								return new_format_value
+							}
 						},
 						{
 							label : '商品名称',
@@ -245,7 +251,6 @@
 			}
 	
 	
-	
 			$('#jqGrid').navGrid("#jqGridPager", {
 				search : true, // show search button on the toolbar
 				add : false,
@@ -256,13 +261,13 @@
 		});
 	</script>
 	<script type="text/javascript">
-/* 		$(function() {
-	
-			$('.glyphicon,.glyphicon-triangle-bottom').click(function() {
-				alert('button is clicking！');
-			});
-			$('.glyphicon,.glyphicon-triangle-bottom').trigger('click');
-		}) */
+	/* 		$(function() {
+		
+				$('.glyphicon,.glyphicon-triangle-bottom').click(function() {
+					alert('button is clicking！');
+				});
+				$('.glyphicon,.glyphicon-triangle-bottom').trigger('click');
+			}) */
 	</script>
 
 </body>

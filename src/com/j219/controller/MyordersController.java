@@ -51,7 +51,6 @@ public class MyordersController {
 	public void myorderdetail(String order_no, HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 		response.setContentType("text/json;charset=UTF-8");
-		response.setHeader("Content-Type", "text/html;charset=UTF-8");
 
 		System.out.println(order_no);
 
