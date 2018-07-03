@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.j219.dao.FindGoodsListMapper">
+
+    <select id="getGoodsList" resultType="com.j219.model.GoodsDetail">
+        select * from goods,goods_details,spec where spec.spec_no=goods_details.spec_no and spec.goods_no=goods.goods_no;
+    </select>
+</mapper>
+

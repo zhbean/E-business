@@ -17,6 +17,7 @@ public class TestController {
 	public ModelAndView test(String username){
 		System.out.println("µ÷ÓÃcontroller");
 		Test test = testDao.getAccountByUsername(username);
+		System.out.println(test.getUserAccount());
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("index");
 		mv.addObject("userAccount",test.getUserAccount());
