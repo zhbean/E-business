@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.j219.dao.FindOrdersListMapper">
+
+    <select id="getOrdersList" resultType="com.j219.model.OrdersDetail">
+        select orders.order_no,orders.account,orders.address_no,orders.order_time,orders.order_status,orders.express_no,
+		SUM(order_details.goods_count) total_count,SUM(order_details.discount_price)  total_money from orders,order_details 
+		where order_details.order_no=orders.order_no 
+		group by orders.order_no,orders.account,orders.address_no,orders.order_time,orders.order_status,orders.express_no;
+    </select>
+</mapper>
