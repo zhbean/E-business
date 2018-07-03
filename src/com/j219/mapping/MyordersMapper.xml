@@ -8,9 +8,13 @@
 		sum_price
 		from orders ,express ,order_details
 		where
-		#{account}=orders.account and orders.order_no=order_details.order_no and
+		#{account}=orders.account and orders.order_no=order_details.order_no
+		and
 		express.express_no=orders.express_no
-		group by order_details.order_no,orders.order_time,express.express_name
+		group by
+		order_details.order_no,orders.order_time,express.express_name
 	</select>
+
+
 
 </mapper>

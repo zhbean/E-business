@@ -112,7 +112,7 @@
 				<div style="margin-left:20px">
 					<h3>我的订单</h3>
 				</div>
-				<div >
+				<div>
 					<table id="jqGrid"></table>
 					<div id="jqGridPager"></div>
 					<br /> <br />
@@ -133,7 +133,7 @@
 	
 		$(document).ready(function() {
 			$("#jqGrid").jqGrid({
-				async : false,
+				async : true,
 				url : 'myorders?account=a',
 				mtype : 'POST',
 				datatype : "json",
@@ -182,16 +182,16 @@
 				width : 900,
 				height : '70%',
 				rowNum : 20,
-				subGrid : true,
-				ubGridRowExpanded : showChildGrid, // javascript function that will take care of showing the child grid
-				subGridOptions : {
-					// expand all rows on load
-					expandOnLoad : true
-				},
 				rowList : [ 20, 30, 50 ],
 				rownumbers : true,
 				rownumWidth : 25,
 				multiselect : true,
+				subGrid : true,
+				subGridRowExpanded : showChildGrid, // javascript function that will take care of showing the child grid
+				subGridOptions : {
+					// expand all rows on load
+					expandOnLoad : true
+				},
 				pager : "#jqGridPager"
 			});
 	
@@ -200,14 +200,15 @@
 				var childGridPagerID = parentRowID + "_pager";
 	
 				// send the parent row primary key to the server so that we know which grid to show
-				var childGridURL = parentRowKey + ".json";
+				//var childGridURL = parentRowKey + ".json";
+				console.log(parentRowKey);
 				//childGridURL = childGridURL + "&parentRowID=" + encodeURIComponent(parentRowKey)
 	
 				// add a table and pager HTML elements to the parent grid row - we will render the child grid here
 				$('#' + parentRowID).append('<table id=' + childGridID + '></table><div id=' + childGridPagerID + ' class=scroll></div>');
 	
 				$("#" + childGridID).jqGrid({
-					url : childGridURL,
+					url : "myorderdetails?order_no=" + parentRowKey,
 					mtype : "POST",
 					datatype : "json",
 					page : 1,
@@ -225,7 +226,7 @@
 						},
 						{
 							label : '商品规格',
-							name : 'spec',
+							name : 'spec_type',
 							width : 100
 						},
 						{
@@ -243,6 +244,7 @@
 			}
 	
 	
+	
 			$('#jqGrid').navGrid("#jqGridPager", {
 				search : true, // show search button on the toolbar
 				add : false,
@@ -252,7 +254,15 @@
 			});
 		});
 	</script>
-
+	<script type="text/javascript">
+/* 		$(function() {
+	
+			$('.glyphicon,.glyphicon-triangle-bottom').click(function() {
+				alert('button is clicking！');
+			});
+			$('.glyphicon,.glyphicon-triangle-bottom').trigger('click');
+		}) */
+	</script>
 
 </body>
 </html>

@@ -7,7 +7,9 @@ $(document).ready(function() {
 		datatype : "json",
 		success : function(result) {
 			console.log(result);
+			console.log(result[1].account);
 			if (result[0].account != null) {
+
 				$("#myaccount").val(result[0].account);
 			}
 			if (result[0].username != null) {
@@ -35,7 +37,7 @@ $(document).ready(function() {
 			}
 		},
 		error : function(result) {
-			console.log(result);
+			console.log("失败"+result);
 		}
 	})
 })
