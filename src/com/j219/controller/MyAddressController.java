@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 import com.j219.dao.ByAddressNoDao;
 import com.j219.dao.MyAddressDao;
 import com.j219.model.MyAddress;
-import com.j219.model.Myorders;
 
 @Controller
 public class MyAddressController {
@@ -26,6 +26,7 @@ public class MyAddressController {
 	
 	@Autowired
 	public ByAddressNoDao ByAddressNoDao;
+	
 	
 	@RequestMapping(value="/myaddress")
 	public void myaddress(String account, HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -64,6 +65,24 @@ public class MyAddressController {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+	
+	@RequestMapping(value="/updateaddress")
+	public ModelAndView updateaddress(String address_no,String address_details,String area, String buyer_name,String phone_number, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		System.out.println(address_no);
+		try {
+			myAddressDao.updateAddress(address_no,address_details,area,buyer_name, phone_number);
+			System.out.println("修改成功");
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("myaddress");
+			mv.addObject("upsuccess",true);
+
+			return mv;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new ModelAndView("redirect:/jsp/myaddress.jsp");
 		}
 	}
 }

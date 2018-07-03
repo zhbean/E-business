@@ -28,7 +28,7 @@
    return account;
 　　}
 	$("#searchtext").bind("change",function(){
-	alert("屌用");
+
 		var a=$("#searchtext").val();
 		Search();
 		
@@ -122,7 +122,7 @@
 			</ul>
 		</div>
 		<div class="detailshow" id="detailshow">
-			
+			<div id="opt-address"></div>
 			<div>
 				<button type="button" class="btn btn-success" id="newaddress"
 					name="newaddress">新增收货地址</button>
