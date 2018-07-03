@@ -109,4 +109,20 @@ public class MyAddressController {
 			return new ModelAndView("redirect:/jsp/myaddress.jsp");
 		}
 	}
+	
+	@RequestMapping(value="/deladdress")
+	public ModelAndView deladdress(String address_no, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		System.out.println("编号"+address_no);
+
+		try {
+			myAddressDao.delAddress(address_no);
+			System.out.println("删除成功");
+			return new ModelAndView("redirect:/jsp/myaddress.jsp");
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new ModelAndView("redirect:/jsp/myaddress.jsp");
+		}
+	}
 }

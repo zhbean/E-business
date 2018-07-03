@@ -14,4 +14,6 @@ public interface MyAddressDao {
 
 	public int addAddress(@Param("account") String account,@Param("address_detail") String address_detail,@Param("area") String area,@Param("buyer_name") String buyer_name,@Param("phone_number") String phone_number);
 
+	public void delAddress(@Param("address_no") String address_no);
+
 }
