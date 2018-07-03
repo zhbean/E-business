@@ -18,6 +18,9 @@
 	$(document).ready(function(){
 	
 	$("#LoginButton").click(function(){Login();});
+	$("#signupButton").click(function(){
+		window.location.href="signup"; 
+	});
 	
 });
 </script>
@@ -25,7 +28,7 @@
 	$(document).ready(function(){
 	var a="<%=request.getParameter("LoginError") %>";
 	if(a!="null"&&a!=""){$("#LoginError").text(a)}
-	
+	signup.jsp
 	
 });
 </script>
@@ -52,7 +55,7 @@
 			</div>
 			<p id="LoginError" class="s"></p>
 			<button type="button" id="LoginButton" class="btn btn-info btn-lg c">登录</button>
-			<button type="button" class="btn btn-warning btn-lg a">注册</button><br>
+			<button type="button" id="signupButton"class="btn btn-warning btn-lg a">注册</button><br>
 			</div>
 		
 	</div>

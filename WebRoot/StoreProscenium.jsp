@@ -18,16 +18,31 @@
 <!--      导航条登录        -->
 <script type="text/javascript">
 $(document).ready(function(){
-	var username="<%=request.getParameter("username") %>";
-	var account="<%=request.getParameter("username") %>";
-	var count="<%=request.getParameter("count") %>";
-	var tcount="<%=request.getParameter("tcount") %>";
+	var username="<%=session.getAttribute("username") %>";
+	var account="<%=session.getAttribute("account") %>";
+	$.ajax({
+		type : 'post',
+		async : false,
+		url : "bulletintitle",
+		data : {},
+		dataType : 'json', //返回数据形式为json
+		success : function(result) {
+			for(var i = 0; i < Object.keys(result).length; i++){
+				$("#notice").append("<li class=gong-zhan-news><a href=bulletins.jsp?bulletintitle="+result[i].bulletinstit+" target=_blank>"+result[i].bulletinstit+"</a></li>");
+			}
+			}
+			// set the new data
+		});
+	
 	if(username!="null"&&username!=""){
 	$("#UserLogin").append("<a href=ManagerShopIndex.jsp><span id='user'>欢迎您!"+username+"</span></a>");
 	$("#UserImg").append("<a href=ManagerShopIndex.jsp><img src=image/013.jpg class=img-circle></a>");
 	$("#Userlo").append("<a href=ManagerShopIndex.jsp><h2>"+username+"</h2></a>");
-	$("#OrderCount").text(count);
-	$("#TOrderCount").text(tcount);
+	$("#selord").click(function(){
+	getcount(account);
+		
+		
+	});
 	}
 	else{
 	$("#UserLogin").append("<a href=Login.jsp><span id='user'class='b'>登录/注册</span></a>");
@@ -60,10 +75,10 @@ $(document).ready(function(){
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">我的219杂货铺 <span class="caret"></span></a>
+							aria-expanded="false" id="selord">我的219杂货铺 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#" target="_blank">未完成订单<span id="OrderCount"class="b">0</span></a></li>
-								<li><a href="#" target="_blank">返修退换货<span id="TOrderCount"class="b">0</span></a></li>
+								<li><a href="#" target="_blank">未完成订单<span id="OrderCount"class="b"></span></a></li>
+								<li><a href="#" target="_blank">返修退换货<span id="TOrderCount"class="b"></span></a></li>
 							</ul></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
@@ -141,7 +156,7 @@ $(document).ready(function(){
 								<ul class="nav navbar-nav navbar-left">
 									<li class="dropdown"><a href="#" class="dropdown-toggle"
 										data-toggle="dropdown" role="button" aria-haspopup="true"
-										aria-expanded="false">我的219杂货铺 <span class="caret"></span></a>
+										aria-expanded="false" >我的219杂货铺 <span class="caret"></span></a>
 										<ul class="dropdown-menu">
 											<li><a href="#" target="_blank">未完成订单<span class="b">0</span></a></li>
 											<li><a href="#" target="_blank">返修退换货<span class="b">0</span></a></li>
@@ -258,9 +273,8 @@ $(document).ready(function(){
 						</h4>
 					</div>
 					<div class="gong-zhan">
-						<ul>
-							<li class="gong-zhan-news"><a href="MyJsp.jsp"
-								target="_blank">11111111111111111111111111111111111</a></li>
+						<ul id="notice">
+							
 						</ul>
 					</div>
 				</div>

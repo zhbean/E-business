@@ -1,6 +1,8 @@
 package com.j219.controller;
 
 import java.io.IOException;
+
+
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,4 +48,73 @@ public class GoodsTwoController {
 			e.printStackTrace();
 		}
 	}
+	
+	@RequestMapping("/orderscount")
+	public void getorderscount(HttpServletRequest req,HttpServletResponse res,String account) throws IOException{
+
+		System.out.println("调用controller");
+		GoodsTwo count =goodsTwoDao.getOrdersCountByAccount(account);
+		GoodsTwo tcount =goodsTwoDao.getTOrdersCountByAccount(account);
+		List<Integer> coulist=new ArrayList<Integer>();
+		coulist.add(count.getOrdersCount());
+		coulist.add(tcount.getTorderCount());
+		
+		PrintWriter out;
+		try {
+			res.setContentType("text/json;charset=UTF-8");
+			out = res.getWriter();
+			//ajax接收到商品数组
+			out.write(JSON.toJSONString(coulist));
+			System.out.print(JSON.toJSONString(coulist));
+			System.out.print("JSON后输出");
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	@RequestMapping("/bulletintitle")
+	public void bulletintitle(HttpServletRequest req,HttpServletResponse res) throws IOException{
+
+		System.out.println("调用controller");
+		List<GoodsTwo> bulletintitlelist = new ArrayList<GoodsTwo>();
+		bulletintitlelist = goodsTwoDao.getbulltinstitle();
+		
+		PrintWriter out;
+		try {
+			res.setContentType("text/json;charset=UTF-8");
+			out = res.getWriter();
+			//ajax接收到商品数组
+			out.write(JSON.toJSONString(bulletintitlelist));
+			System.out.print(JSON.toJSONString(bulletintitlelist));
+			System.out.print("JSON后输出");
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	@RequestMapping("/bulletin")
+	public void getbulletin(HttpServletRequest req,HttpServletResponse res,String bulletinstit) throws IOException{
+
+		System.out.println("调用troller");
+		List<GoodsTwo> bulletinslist = new ArrayList<GoodsTwo>();
+		bulletinslist = goodsTwoDao.getbulltins(bulletinstit);
+		
+		PrintWriter out;
+		try {
+			res.setContentType("text/json;charset=UTF-8");
+			out = res.getWriter();
+			//ajax接收到商品数组
+			out.write(JSON.toJSONString(bulletinslist));
+			System.out.print(JSON.toJSONString(bulletinslist));
+			System.out.print("JSON后输出");
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
+
+

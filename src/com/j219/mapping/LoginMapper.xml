@@ -4,19 +4,11 @@
     <resultMap type="com.j219.model.Login" id="Map">
         <id property="id" column="id" />
         <result property="username" column="username" />
-        <result property="ordersCount" column="ordersCount" />
-        <result property="torderCount" column="torderCount" />
+        
     </resultMap>
     <select id="getUsernameByAccountAndpassword" parameterType="java.lang.String"
         resultMap="Map">
         select * from users where account=#{account} and password=#{password}
     </select>
-    <select id="getOrdersCountByAccount" parameterType="java.lang.String"
-        resultMap="Map">
-        select count(*) ordersCount from orders where account=#{account} and order_status=0
-    </select>
-    <select id="getTOrdersCountByAccount" parameterType="java.lang.String"
-        resultMap="Map">
-        select count(*) torderCount from orders where account=#{account} and order_status=0
-    </select>
+    
 </mapper>

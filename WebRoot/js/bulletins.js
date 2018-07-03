@@ -35,8 +35,3 @@ function Search(){
 		});
 
 }
-function getbulletins(){
-	var a="bulletin";
-	
-	return a;
-}
