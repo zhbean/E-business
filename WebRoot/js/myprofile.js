@@ -7,7 +7,7 @@ $(document).ready(function() {
 		datatype : "json",
 		success : function(result) {
 			console.log(result);
-			console.log(result[1].account);
+			console.log(result.account);
 			if (result[0].account != null) {
 				$("#myaccount").val(result[0].account);
 			}
