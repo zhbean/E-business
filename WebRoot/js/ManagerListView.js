@@ -1,11 +1,3 @@
-$(document).ready(function(){
-  $("#BtmodifyGoods").hide();
-  $("#BtAddNewGoods").hide();
-  $("#spec_no").hide();
-  $("#price").hide();
-  $("#sku").hide();
-});
-
 function fetchGoodsData() {
 	var gridArrayData = [];
 	// show loading message
@@ -42,6 +34,68 @@ function fetchGoodsData() {
 		}
 	});
 }
+
+$(document).ready(function(){
+  $("#BtmodifyGoods").hide();
+  $("#BtAddNewGoods").hide();
+  $("#spec_no").hide();
+  $("#price").hide();
+  $("#sku").hide();
+  $("#addGoods").hide();
+  $("#modifySku").click(function () {
+	  $("#spec_no").show();
+	  $("#price").show();
+	  $("#sku").show();
+	  $("#addGoods").show();
+  });
+  $("#addGoodsBt").click(function () {
+	  $("#addGoods").show();
+  });
+  $("#addNewGoods").click(function () {
+		alert("提交");
+		var modal_goods_no = document.getElementById("modal_goods_no").value;
+		var modal_goods_name = document.getElementById("modal_goods_name").value;
+		var modal_goods_discount = document.getElementById("modal_goods_discount").value;
+		var modal_goods_status = document.getElementById("modal_goods_status").value;
+		var modal_select1 = document.getElementById("modal_select1").value;
+		var modal_select2 = document.getElementById("modal_select2").value;
+		var modal_spec_no = document.getElementById("modal_spec_no").value;
+		var modal_spec_type = document.getElementById("modal_spec_type").value;
+		var modal_price = document.getElementById("modal_price").value;
+		var modal_sku = document.getElementById("modal_sku").value;
+		console.log(modal_goods_no);
+		console.log(modal_goods_name);
+		console.log(modal_goods_discount);
+		console.log(modal_goods_status);
+		console.log(modal_select1);
+		console.log(modal_select2);
+		console.log(modal_spec_no);
+		console.log(modal_spec_type);
+		console.log(modal_price);
+		console.log(modal_sku);
+		$.ajax({
+			type : 'post',
+			async : false,
+			url : "AddNewGoods",
+			data : {"goods_no":modal_goods_no,"goods_name":modal_goods_name,
+				"goods_discount":modal_goods_discount,"goods_status":modal_goods_status,
+				"sort_no":modal_select1,"branch_no":modal_select2,
+				"spec_no":modal_spec_no,"spec_type":modal_spec_type,
+				"price":modal_price,"sku":modal_sku},
+			dataType : 'json', //返回数据形式为json
+			success : function(result) {
+				fetchGoodsData();
+				console.log("成功");
+				alert("修改成功！");
+				},
+			error : function(){
+				console.log("失败");
+		        alert("修改失败")
+		    }
+			});
+	})
+});
+
 function modifyGoodsInf() {
 	var spec_no = document.getElementById("spec_no").value;
 	var price = document.getElementById("price").value;
@@ -63,3 +117,4 @@ function modifyGoodsInf() {
 	    }
 		});
 }
+

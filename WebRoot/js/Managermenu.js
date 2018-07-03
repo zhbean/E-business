@@ -123,7 +123,12 @@ function siblings(elem) {
     }
     return r;
 }
-
+//测试用
 function display_alert() {
 	alert("点击生效")
+}
+//跳转主页
+function GotoHomePage() {
+	alert("前往商城主页");
+	javascrtpt:window.location.href='StoreProscenium.jsp';
 }
