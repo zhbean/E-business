@@ -131,7 +131,7 @@
 				type="text" class="form-control" placeholder="商品库存">
 			<button id="BtmodifyGoods" class="btn btn-primary"
 				style="width:200px;height:50px;" onclick="modifyGoodsInf()">修改商品信息</button>
-		</div>
+		</div>0
 
 		<!-- 模态框  -->
 		<button id="addGoods" type="button" class="btn btn-primary btn-lg"
