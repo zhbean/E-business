@@ -6,6 +6,20 @@ public class Myorders {
 	private String order_time;
 	private String express_name;
 	private String sum_price;
+	private String order_status;
+	public String getOrder_status() {
+		
+		if("0".equals(order_status)){this.order_status="未支付";}
+		else if("1".equals(order_status)){this.order_status="已支付";}
+		else if("2".equals(order_status)){this.order_status="已完成";}
+		else if("3".equals(order_status)){this.order_status="退款";}
+		if("4".equals(order_status)){this.order_status="删除";}
+		
+		return order_status;
+	}
+	public void setOrder_status(String order_status) {		
+		this.order_status = order_status;
+	}
 	public String getOrder_no() {
 		return order_no;
 	}

@@ -20,8 +20,23 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="css/profile.css">
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="js/StoreProscenium.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
+<script language="JavaScript"> 
+　　function getAccount(){
+   　　var account="<%=session.getAttribute("account")%>"; 
+   return account;
+　　}
+	$("#searchtext").bind("change",function(){
+	alert("屌用");
+		var a=$("#searchtext").val();
+		Search();
+		
+	});
+</script>
 <script type="text/javascript" src="js/myaddress.js"></script>
+
+
 
 </head>
 
@@ -54,10 +69,24 @@
 					</ul></li>
 			</ul>
 			<form class="navbar-form navbar-left">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search">
+				<div class="form-group input-group sec-t z">
+					<a href="#" class="dropdown-toggle sec-t" data-toggle="dropdown"
+						role="button" aria-haspopup="true" aria-expanded="true"><input
+						type="text" id="searchtext" class="form-control "></a>
+					<ul class="dropdown-menu sec-t">
+						<li><a href="#" target="_blank" id="1"></a></li>
+						<li><a href="#" target="_blank" id="2"></a></li>
+						<li><a href="#" target="_blank" id="3"></a></li>
+						<li><a href="#" target="_blank" id="4"></a></li>
+						<li><a href="#" target="_blank" id="5"></a></li>
+						<li><a href="#" target="_blank" id="6"></a></li>
+						<li><a href="#" target="_blank" id="7"></a></li>
+						<li><a href="#" target="_blank" id="8"></a></li>
+						<li><a href="#" target="_blank" id="9"></a></li>
+						<li><a href="#" target="_blank" id="10"></a></li>
+					</ul>
+					<button type="submit" class="btn btn-default">搜索</button>
 				</div>
-				<button type="submit" class="btn btn-default">搜索</button>
 			</form>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#">购物车</a></li>
@@ -92,46 +121,15 @@
 				<li class="list-group-item">我的金币</li>
 			</ul>
 		</div>
-		<div style="background-color:write">
-			<form action="setprofile">
-				<div>
-					<span>账号<input id="myaccount" name="myaccount"
-						class="form-control" type="text" placeholder="账号" readonly></span>
-				</div>
-				<br>
-				<div>
-					<span>用户名<input id="myusername" name="myusername"
-						class="form-control" type="text" placeholder="名字"></span>
-				</div>
-				<br>
-				<div>
-					<span>性别</span>
-					<div class="bs-example">
-						<div class="form-group">
-							<label class="radio-inline "> <input type="radio"
-								value="option1" id="sex-man" name="sex" checked>男
-							</label> <label class="radio-inline"> <input type="radio"
-								value="option2" id="sex-woman" name="sex">女
-							</label> <label class="radio-inline"> <input type="radio"
-								value="option3" id="sex-non" name="sex">保密
-							</label>
-						</div>
-					</div>
-				</div>
-				<br>
-				<div>
-					<span>等级<input id="myrank" name="myrank"
-						class="form-control" type="text" placeholder="等级" readonly></span>
-				</div>
-				<br>
-				<div>
-					<span>邮箱<input id="myemail" name="myemail"
-						class="form-control" type="text" placeholder="邮箱" readonly><a
-						href="">验证邮箱</a></span>
-				</div>
-				<br>
-				<button type="submit" class="btn btn-default">提交</button>
-			</form>
+		<div class="detailshow" id="detailshow">
+			
+			<div>
+				<button type="button" class="btn btn-success" id="newaddress"
+					name="newaddress">新增收货地址</button>
+				<div id="myaddress"></div>
+			</div>
+			<br>
+
 		</div>
 		<div class="dl-im" id="UserImg">
 			<!-- 登录模块图片区 -->
@@ -139,8 +137,6 @@
 			<div>
 				<font id="gold-coin"></font>
 			</div>
-
 		</div>
-	</div>
 </body>
 </html>

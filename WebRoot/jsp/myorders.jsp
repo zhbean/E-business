@@ -169,11 +169,11 @@
 					{
 						label : '支付',
 						name : 'pay_btn',
-						width : '30',
-						formatter : function(cellvalue, options, rowObject) {
-							// do something here
-							console.log(cellvalue)
-							var new_format_value = '<a href="<%=basePath%>#.jsp"><button type="button">去支付</button></a>'
+						width : '35',
+						formatter : function(cellvalue, {rowId: rid}, rowObject) {
+							// do something here	
+							console.log(rid);
+							var new_format_value = '<a href="<%=basePath%>'+rid+'.jsp"><button type="button" style="width:60px">去支付</button></a>'
 							return new_format_value
 						}
 					},
@@ -181,10 +181,10 @@
 						label : '退货',
 						name : 'returns',
 						width : 30,
-						formatter : function(cellvalue, options, rowObject) {
+						formatter : function(cellvalue, {rowId: rid}, rowObject) {
 							// do something here
 							console.log(cellvalue)
-							var new_format_value = '<a href="<%=basePath%>#.jsp"><button type="button">Click Me!</button></a>'
+							var new_format_value = '<a href="<%=basePath%>'+rid+'.jsp"><button type="button" style="width:50px">退货</button></a>'
 							return new_format_value
 						}
 					},
@@ -244,7 +244,7 @@
 							formatter : function(cellvalue, options, rowObject) {
 								// do something here
 								console.log(cellvalue)
-								var new_format_value = '<a href="<%=basePath%>StoreProscenium.jsp"><img alt="杂货铺" src="' + cellvalue + '" height=50px></a>'
+								var new_format_value = '<img alt="杂货铺" src="' + cellvalue + '" height=50px></a>'
 								return new_format_value
 							}
 						},

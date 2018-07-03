@@ -22,7 +22,7 @@
 <link rel="stylesheet" type="text/css" href="css/profile.css">
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
-<script type="text/javascript" src="js/myprofile.js"></script>
+
 
 </head>
 
@@ -92,7 +92,7 @@
 				<li class="list-group-item">我的金币</li>
 			</ul>
 		</div>
-		<div style="background-color:write">
+		<div style="flex-grow:1">
 		<form action="setprofile">
 			<div>
 				<span>账号<input id="myaccount" name="myaccount" class="form-control" type="text"
@@ -139,5 +139,6 @@
 			
 		</div>
 	</div>
+	<script type="text/javascript" src="js/myprofile.js"></script>
 </body>
 </html>

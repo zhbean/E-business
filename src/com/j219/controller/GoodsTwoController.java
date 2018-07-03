@@ -30,7 +30,7 @@ public class GoodsTwoController {
 	public void goodslistJson(HttpServletRequest req,HttpServletResponse res,String goodsname) throws IOException{
 
 		System.out.print(goodsname);
-		System.out.println("µ÷ÓÃcontroller");
+		System.out.println("è°ƒç”¨controller");
 		List<GoodsTwo> goodslist = new ArrayList<GoodsTwo>();
 		goodslist = goodsTwoDao.getGoodsname(goodsname);
 		
@@ -38,10 +38,10 @@ public class GoodsTwoController {
 		try {
 			res.setContentType("text/json;charset=UTF-8");
 			out = res.getWriter();
-			//ajax½ÓÊÕµ½ÉÌÆ·Êý×é
+			//ajaxï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
 			out.write(JSON.toJSONString(goodslist));
 			System.out.print(JSON.toJSONString(goodslist));
-			System.out.print("JSONºóÊä³ö");
+			System.out.print("JSON");
 			out.flush();
 			out.close();
 		} catch (Exception e) {
@@ -52,7 +52,7 @@ public class GoodsTwoController {
 	@RequestMapping("/orderscount")
 	public void getorderscount(HttpServletRequest req,HttpServletResponse res,String account) throws IOException{
 
-		System.out.println("µ÷ÓÃcontroller");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½controller");
 		GoodsTwo count =goodsTwoDao.getOrdersCountByAccount(account);
 		GoodsTwo tcount =goodsTwoDao.getTOrdersCountByAccount(account);
 		List<Integer> coulist=new ArrayList<Integer>();
@@ -63,10 +63,10 @@ public class GoodsTwoController {
 		try {
 			res.setContentType("text/json;charset=UTF-8");
 			out = res.getWriter();
-			//ajax½ÓÊÕµ½ÉÌÆ·Êý×é
+			//ajaxï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
 			out.write(JSON.toJSONString(coulist));
 			System.out.print(JSON.toJSONString(coulist));
-			System.out.print("JSONºóÊä³ö");
+			System.out.print("JSONï¿½ï¿½ï¿½ï¿½ï¿½");
 			out.flush();
 			out.close();
 		} catch (Exception e) {
@@ -76,7 +76,7 @@ public class GoodsTwoController {
 	@RequestMapping("/bulletintitle")
 	public void bulletintitle(HttpServletRequest req,HttpServletResponse res) throws IOException{
 
-		System.out.println("µ÷ÓÃcontroller");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½controller");
 		List<GoodsTwo> bulletintitlelist = new ArrayList<GoodsTwo>();
 		bulletintitlelist = goodsTwoDao.getbulltinstitle();
 		
@@ -84,10 +84,10 @@ public class GoodsTwoController {
 		try {
 			res.setContentType("text/json;charset=UTF-8");
 			out = res.getWriter();
-			//ajax½ÓÊÕµ½ÉÌÆ·Êý×é
+			//ajaxï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
 			out.write(JSON.toJSONString(bulletintitlelist));
 			System.out.print(JSON.toJSONString(bulletintitlelist));
-			System.out.print("JSONºóÊä³ö");
+			System.out.print("JSONï¿½ï¿½ï¿½ï¿½ï¿½");
 			out.flush();
 			out.close();
 		} catch (Exception e) {
@@ -97,7 +97,7 @@ public class GoodsTwoController {
 	@RequestMapping("/bulletin")
 	public void getbulletin(HttpServletRequest req,HttpServletResponse res,String bulletinstit) throws IOException{
 
-		System.out.println("µ÷ÓÃtroller");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½troller");
 		List<GoodsTwo> bulletinslist = new ArrayList<GoodsTwo>();
 		bulletinslist = goodsTwoDao.getbulltins(bulletinstit);
 		
@@ -105,10 +105,10 @@ public class GoodsTwoController {
 		try {
 			res.setContentType("text/json;charset=UTF-8");
 			out = res.getWriter();
-			//ajax½ÓÊÕµ½ÉÌÆ·Êý×é
+			//ajaxï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
 			out.write(JSON.toJSONString(bulletinslist));
 			System.out.print(JSON.toJSONString(bulletinslist));
-			System.out.print("JSONºóÊä³ö");
+			System.out.print("JSONï¿½ï¿½ï¿½ï¿½ï¿½");
 			out.flush();
 			out.close();
 		} catch (Exception e) {
@@ -118,17 +118,17 @@ public class GoodsTwoController {
 	@RequestMapping("/CartCount")
 	public void getCartCount(HttpServletRequest req,HttpServletResponse res,String account) throws IOException{
 
-		System.out.println("µ÷ÓÃoller");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½oller");
 		GoodsTwo cartcount =goodsTwoDao.getCartCountByAccount(account);
 		List<GoodsTwo> cartlist = new ArrayList<GoodsTwo>();
 		try {
 			res.setContentType("text/json;charset=UTF-8");
 			PrintWriter out;
 			out = res.getWriter();
-			//ajax½ÓÊÕµ½ÉÌÆ·Êý×é
+			//ajaxï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
 			out.write(JSON.toJSONString(cartcount.getCartCount()));
 			System.out.print(JSON.toJSONString(cartcount.getCartCount()));
-			System.out.print("JSONºóÊä³ö");
+			System.out.print("JSONï¿½ï¿½ï¿½ï¿½ï¿½");
 			out.flush();
 			out.close();
 		} catch (Exception e) {

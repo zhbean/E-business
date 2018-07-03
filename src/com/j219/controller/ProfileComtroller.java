@@ -48,9 +48,9 @@ public class ProfileComtroller {
 		
 		ModelAndView mv = new ModelAndView();
 		
-		if("option1".equals(sex)) {sex = "ÄĞ";}
-		else if("option2".equals(sex)) {sex = "Å®";}
-		else {sex = "±£ÃÜ";}
+		if("option1".equals(sex)) {sex = "ç”·";}
+		else if("option2".equals(sex)) {sex = "å¥³";}
+		else {sex = "ä¿å¯†";}
 		
 		if (myusername!=null && sex!=null) {
 			try {
@@ -58,13 +58,13 @@ public class ProfileComtroller {
 				return new ModelAndView("redirect:/jsp/profile.jsp?account="+myaccount);
 			} catch (Exception e) {
 				System.out.println(e);
-				System.out.println("²åÈëÊ§°Ü");
+				System.out.println("ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½");
 				mv.setViewName("profile.jsp?account="+myaccount);
 				return mv;
 			}
 		}
 		else {
-			System.out.println("×¢²áÊ§°Ü");
+			System.out.println("å¤±è´¥");
 			mv.setViewName("profile.jsp?account="+myaccount);
 			return mv;
 		}
