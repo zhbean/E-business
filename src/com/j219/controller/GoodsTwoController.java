@@ -241,6 +241,17 @@ public class GoodsTwoController {
 			e.printStackTrace();
 		}
 	}
+	@RequestMapping("/delcart")
+	public ModelAndView delcart(String specno, String account) {
+		System.out.println("µ÷ÓÃcontroller");
+		goodsTwoDao.delCart(specno, account);
+		
+		ModelAndView mv = new ModelAndView();
+		
+			mv.setViewName("redirect:/cart.jsp");
+
+		return mv;
+	}
 }
 
 

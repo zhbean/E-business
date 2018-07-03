@@ -78,4 +78,7 @@
  		and goods_details.spec_no=spec.spec_no
   		and goods.goods_no=spec.goods_no
     </select>
+    <delete id="delCart" parameterType="java.lang.String">
+		delete from cart_details where account=#{account} and spec_no=#{specno}   
+		 </delete>
 </mapper>

@@ -151,7 +151,7 @@ $(document).ready(function(){
  				
  			</tbody>
 			</table>
-		
+		<div class="jiesan"><button class="btn btn-danger jsa">去结算</button></div>
 		<div class="bottm"></div>
 		</div>
 	</div>
@@ -218,13 +218,13 @@ $(document).ready(function(){
 			
 			for(var i = 0; i < Object.keys(result).length; i++){
 				$("#cartgooodstdId").append("<tr>"+
- 					"<td><div class='shang'><a id='abtncl'><div class='shang-tu'><img src='"+result[i].goodsimgadrs+"' class='imgsz'></div>"+
- 					"<div class='shang-jie'>"+result[i].goodsname+"</div></div></a></td>"+
+ 					"<td><div class='shang'><a id='abtncl' href='goodsdetails.jsp?goodsname="+result[i].goodsname+"'><div class='shang-tu'><img src='"+result[i].goodsimgadrs+"' class='imgsz'></div>"+
+ 					"<div class='shang-jie'>商品名:"+result[i].goodsname+"  "+"规格:"+result[i].spectype+"</div></div></a></td>"+
  					"<td><div class='danjia'>¥"+result[i].price+"</div></td>"+
  					"<td><div class='shuliang'><button class='btnsz' disabled='disabled' id='countSbtBtn'>-</button>"+
  					"<input type='text' class='iptx' value='"+result[i].goodscount+"' id='countView'><button class=' btnsz' id='countAdBtn'>+</button></div></td>"+
  					"<td><div class='xiaoji'>¥"+result[i].price*result[i].goodscount+"</div></td>"+
- 					"<td><div class='caozuo'><a href='#'>删除</a></div></td></tr>");
+ 					"<td><div class='caozuo'><a target=_blank href='delcart?specno="+result[i].specno+"&&account="+account+"'>删除</a></div></td></tr>");
 			}
 			}
 		});
