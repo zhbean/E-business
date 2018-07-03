@@ -2,23 +2,25 @@ package com.j219.model;
 
 public class User {
 	private String username;
-	private String accountString;
+	private String account;
 	private String password;
 	private String mem_sex;
 	private String e_mail;
 	private Integer pay_psd;
 	private Integer mem_rank;
+	private String mem_kind;
+	private Integer gold_coin;
 	public String getUsername() {
 		return username;
 	}
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getAccountString() {
-		return accountString;
+	public String getAccount() {
+		return account;
 	}
 	public void setAccountString(String accountString) {
-		this.accountString = accountString;
+		this.account = accountString;
 	}
 	public String getPassword() {
 		return password;
@@ -62,6 +64,5 @@ public class User {
 	public void setGold_coin(Integer gold_coin) {
 		this.gold_coin = gold_coin;
 	}
-	private String mem_kind;
-	private Integer gold_coin;
+
 }

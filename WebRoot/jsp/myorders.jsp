@@ -191,10 +191,10 @@
 					{
 						label : '操作',
 						name : "actions",
-						width : 20,
+						width : 30,
 						formatter : "actions",
 						formatoptions : {
-							keys : true,
+							url:"delmyorder?order_no=",
 							delOptions : {}
 						}
 					},
@@ -213,7 +213,7 @@
 				subGridRowExpanded : showChildGrid, // javascript function that will take care of showing the child grid
 				subGridOptions : {
 					// expand all rows on load
-					expandOnLoad : true
+					"expandOnLoad" : true,
 				},
 				pager : "#jqGridPager"
 			});
@@ -251,7 +251,14 @@
 						{
 							label : '商品名称',
 							name : 'goods_name',
-							width : 100
+							width : 100,
+							//key:true,
+							formatter : function(cellvalue, options, rowObject) {
+								// do something here
+
+								var new_format_value = '<a id="goodsdetails" href="<%=basePath%>goodsdetails.jsp?goodsname="+cellvalue>'+cellvalue+'</a>'
+								return new_format_value
+							}
 						},
 						{
 							label : '商品规格',
@@ -265,8 +272,11 @@
 						}
 					],
 					loadonce : true,
-					width : 750,
+					width : 780,
 					height : '100%',
+					/* loadComplete : (function() {
+							$('.glyphicon,.glyphicon-triangle-bottom,.glyphicon-triangle-right').trigger('click');
+					}), */
 					pager : "#" + childGridPagerID
 				});
 	
@@ -283,13 +293,13 @@
 		});
 	</script>
 	<script type="text/javascript">
-	/* 		$(function() {
-		
-				$('.glyphicon,.glyphicon-triangle-bottom').click(function() {
+	 		$(function() {
+				$('#goodsimg').blur(function() {
+				$('#goodsdetails').trigger('click');
 					alert('button is clicking！');
 				});
-				$('.glyphicon,.glyphicon-triangle-bottom').trigger('click');
-			}) */
+				
+			})
 	</script>
 
 </body>

@@ -42,6 +42,7 @@
 		<p style="text-align: center;line-height: 50px;font-size:20px;">管理界面</p>
 
 	</header>
+			
 	<div id="menu">
 		<!--隐藏菜单-->
 		<div id="ensconce">
@@ -63,7 +64,7 @@
 							商品管理<i></i>
 						</h2>
 						<div class="secondary">
-							<h3 onclick="display_alert()">添加商品</h3>
+							<h3 id="addGoods">添加商品</h3>
 							<h3 onclick="display_alert()">添加SKU</h3>
 							<h3 id="ShowGoodsList">在售商品</h3>
 							<h3>下架商品</h3>
@@ -131,15 +132,19 @@
 	<div style="background-color:#e5e5e5;width:100%;height:100%">
 
 		<div class="OutListClass"
-			style="margin-left:500px;background-color:#e5e5e5;width:700px;height:780px"
+			style="margin-left:500px;background-color:#e5e5e5;width:900px;height:780px"
 			id="displayForManager">
-
-			<!-- <div id="jqTurn" style="margin:0 auto;width:250px!important;height:300px!important"></div> -->
 			<div class="OutListClass" id="jqTurn"></div>
-			<!-- style="margin:0 auto;" -->
 			<table class="ListTable" id="jqlist"></table>
 			<div id="jqGridPager" class="OutListClass"></div>
 		</div>
+		
+		<div class="OutListClass" style="margin-left:1500px;width:200px;height:50px">
+			 <input id="spec_no" type="text" class="form-control" placeholder="商品详情号">
+			  <input id="price" type="text" class="form-control" placeholder="商品价格">
+			  <input id="sku" type="text" class="form-control" placeholder="商品库存">
+			<button id="BtmodifyGoods" class="btn btn-primary"  style="width:200px;height:50px;" onclick="modifyGoodsInf()">修改商品信息</button>
+			</div>
 
 	</div>
 
@@ -150,6 +155,10 @@
 
 	<script>
 		$("#ShowGoodsList").click(function() {
+			$("#BtmodifyGoods").show();
+			$("#spec_no").show();
+			$("#price").show();
+			$("#sku").show();
 			$("#jqTurn").empty();
 			$("#jqTurn").append('<table id="jqlist"></table><div id="jqGridPager"></div>');
 			$("#jqlist").jqGrid({
@@ -157,13 +166,14 @@
 					{
 						label : '商品编号',
 						name : 'goods_no',
+						sorttype:'goods_no',
 						width : 60,
 						height : 80,
 					},
 					{
 						label : '商品名称',
 						name : 'goods_name',
-						width : 60,
+						width : 100,
 					},
 					{
 						label : '商品折扣',
@@ -188,12 +198,27 @@
 						label : '商品品牌',
 						name : 'brand_no',
 						width : 60,
+					},
+					{
+						label : '商品详情号',
+						name : 'spec_no',
+						width : 60,
+					},
+					{
+						label : '商品价格',
+						name : 'price',
+						width : 60,
+					},
+					{
+						label : '商品库存',
+						name : 'sku',
+						width : 60,
 					}
 				],
 	
 				viewrecords : true, // show the current page, data rang and total records on the toolbar
 				height : 800,
-				width : 700,
+				width : 950,
 				rowNum : 60,
 				datatype : 'local',
 				pager : "#jqGridPager",
@@ -218,9 +243,12 @@
 								goods_no : result[i].goods_no,
 								goods_name : result[i].goods_name,
 								goods_discount : result[i].goods_discount,
-								goods_status : result[i].goods_status,
+								goods_status : "在售商品",
 								sort_no : result[i].sort_no,
-								brand_no : result[i].brand_no
+								brand_no : result[i].brand_no,
+								spec_no : result[i].spec_no,
+								price : result[i].price,
+								sku : result[i].sku
 							});
 						}
 						// set the new data
@@ -240,6 +268,10 @@
 	
 	<script>
 		$("#ShowUsersList").click(function() {
+			$("#BtmodifyGoods").hide();
+			$("#spec_no").hide();
+			$("#price").hide();
+			$("#sku").hide();
 			$("#jqTurn").empty();
 			$("#jqTurn").append('<table id="jqlist"></table><div id="jqGridPager"></div>');
 			$("#jqlist").jqGrid({
@@ -274,15 +306,11 @@
 						label : '支付密码',
 						name : 'pay_psd',
 						width : 90,
-						sorttype : 'integer',
-						formatter : 'number',
 					},
 					{
 						label : '用户等级',
 						name : 'mem_rank',
 						width : 60,
-						sorttype : 'integer',
-						formatter : 'number',
 					},
 					{
 						label : '用户类型',
@@ -320,7 +348,6 @@
 					data : {},
 					dataType : 'json', //返回数据形式为json
 					success : function(result) {
-						console.log(result);
 						for (var i = 0; i < Object.keys(result).length; i++) {
 							gridArrayData.push({
 								username : result[i].username,

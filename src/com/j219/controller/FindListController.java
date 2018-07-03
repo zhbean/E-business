@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.alibaba.fastjson.JSON;
 import com.j219.dao.FindGoodsListMapper;
 import com.j219.dao.FindUserListMapper;
-import com.j219.model.Goods;
+import com.j219.model.GoodsDetail;
 import com.j219.model.User;
 
 @Controller
@@ -31,7 +31,7 @@ public class FindListController {
 	@RequestMapping("/goodslist")
 	public ModelAndView goodslist() {
 		System.out.println("调用controllerForGoodsList");
-		List<Goods> goodslist = new ArrayList<Goods>();
+		List<GoodsDetail> goodslist = new ArrayList<GoodsDetail>();
 		goodslist = findGoodsListMapper.getGoodsList();// 获得所有商品列表
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("GoodslistTest");
@@ -42,7 +42,7 @@ public class FindListController {
 	@RequestMapping("/JSONGoodsList")
 	public void goodslistJson(HttpServletRequest req,HttpServletResponse res) {
 		System.out.println("调用controllerForGoodsListForJSON");
-		List<Goods> goodslist = new ArrayList<Goods>();
+		List<GoodsDetail> goodslist = new ArrayList<GoodsDetail>();
 		goodslist = findGoodsListMapper.getGoodsList();// 获得所有商品列表
 		// 向ajax发送数据
 		PrintWriter out;
@@ -70,7 +70,7 @@ public class FindListController {
 		try {
 			res.setContentType("text/json;charset=UTF-8");
 			out = res.getWriter();
-			//ajax接收到商品数组
+			//ajax接收到用户数组
 			out.write(JSON.toJSONString(userslist));
 			System.out.print(JSON.toJSONString(userslist));
 			System.out.print("JSON用户");
