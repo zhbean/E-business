@@ -1,12 +1,13 @@
 $(document).ready(function() {
 	$.ajax({
 		async : false,
-		type : "POST",
+		type : "GET",
 		url : "myprofile?account=a",
 		data : {},
 		datatype : "json",
 		success : function(result) {
 			console.log(result);
+			console.log(result.account);
 			if (result[0].account != null) {
 				$("#myaccount").val(result[0].account);
 			}
@@ -35,7 +36,7 @@ $(document).ready(function() {
 			}
 		},
 		error : function(result) {
-			console.log(result);
+			console.log("失败"+result);
 		}
 	})
 })

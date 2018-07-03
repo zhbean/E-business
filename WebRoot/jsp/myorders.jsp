@@ -22,6 +22,7 @@
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 
+
 <script type="text/ecmascript" src="js/grid.locale-cn.js"></script>
 
 <script type="text/ecmascript" src="js/jquery.jqGrid.min.js"></script>
@@ -112,7 +113,7 @@
 				<div style="margin-left:20px">
 					<h3>我的订单</h3>
 				</div>
-				<div >
+				<div>
 					<table id="jqGrid"></table>
 					<div id="jqGridPager"></div>
 					<br /> <br />
@@ -133,7 +134,7 @@
 	
 		$(document).ready(function() {
 			$("#jqGrid").jqGrid({
-				async : false,
+				async : true,
 				url : 'myorders?account=a',
 				mtype : 'POST',
 				datatype : "json",
@@ -168,10 +169,10 @@
 					{
 						label : '操作',
 						name : "actions",
-						width : 20,
+						width : 30,
 						formatter : "actions",
 						formatoptions : {
-							keys : true,
+							url:"delmyorder?order_no=",
 							delOptions : {}
 						}
 					},
@@ -182,16 +183,16 @@
 				width : 900,
 				height : '70%',
 				rowNum : 20,
-				subGrid : true,
-				ubGridRowExpanded : showChildGrid, // javascript function that will take care of showing the child grid
-				subGridOptions : {
-					// expand all rows on load
-					expandOnLoad : true
-				},
 				rowList : [ 20, 30, 50 ],
 				rownumbers : true,
 				rownumWidth : 25,
 				multiselect : true,
+				subGrid : true,
+				subGridRowExpanded : showChildGrid, // javascript function that will take care of showing the child grid
+				subGridOptions : {
+					// expand all rows on load
+					"expandOnLoad" : true,
+				},
 				pager : "#jqGridPager"
 			});
 	
@@ -200,14 +201,15 @@
 				var childGridPagerID = parentRowID + "_pager";
 	
 				// send the parent row primary key to the server so that we know which grid to show
-				var childGridURL = parentRowKey + ".json";
+				//var childGridURL = parentRowKey + ".json";
+				console.log(parentRowKey);
 				//childGridURL = childGridURL + "&parentRowID=" + encodeURIComponent(parentRowKey)
 	
 				// add a table and pager HTML elements to the parent grid row - we will render the child grid here
 				$('#' + parentRowID).append('<table id=' + childGridID + '></table><div id=' + childGridPagerID + ' class=scroll></div>');
 	
 				$("#" + childGridID).jqGrid({
-					url : childGridURL,
+					url : "myorderdetails?order_no=" + parentRowKey,
 					mtype : "POST",
 					datatype : "json",
 					page : 1,
@@ -216,16 +218,31 @@
 							label : '商品图片',
 							name : 'goods_img',
 							key : true,
-							width : 50
+							width : 50,
+							formatter : function(cellvalue, options, rowObject) {
+								// do something here
+								
+								var strValue=$("#" + childGridID).jqGrid("getCell",cellvalue,1,true);
+								console.log(cellvalue);
+								var new_format_value = '<div id="goodsimg" ><img  alt="杂货铺" src="' + cellvalue + '" height=50px></div>'
+								return new_format_value
+							}
 						},
 						{
 							label : '商品名称',
 							name : 'goods_name',
-							width : 100
+							width : 100,
+							//key:true,
+							formatter : function(cellvalue, options, rowObject) {
+								// do something here
+
+								var new_format_value = '<a id="goodsdetails" href="<%=basePath%>goodsdetails.jsp?goodsname="+cellvalue>'+cellvalue+'</a>'
+								return new_format_value
+							}
 						},
 						{
 							label : '商品规格',
-							name : 'spec',
+							name : 'spec_type',
 							width : 100
 						},
 						{
@@ -235,8 +252,11 @@
 						}
 					],
 					loadonce : true,
-					width : 750,
+					width : 780,
 					height : '100%',
+					/* loadComplete : (function() {
+							$('.glyphicon,.glyphicon-triangle-bottom,.glyphicon-triangle-right').trigger('click');
+					}), */
 					pager : "#" + childGridPagerID
 				});
 	
@@ -252,7 +272,15 @@
 			});
 		});
 	</script>
-
+	<script type="text/javascript">
+	 		$(function() {
+				$('#goodsimg').blur(function() {
+				$('#goodsdetails').trigger('click');
+					alert('button is clicking！');
+				});
+				
+			})
+	</script>
 
 </body>
 </html>
