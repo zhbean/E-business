@@ -52,12 +52,12 @@ public class MyordersController {
 			throws IOException {
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/json;charset=UTF-8");
-		request.setCharacterEncoding("UTF-8");
 		response.setHeader("Content-Type", "text/html;charset=UTF-8");
 
 		System.out.println(order_no);
 
 		try {
+			request.setCharacterEncoding("UTF-8");
 			List<MyorderDetails> myorders = myorderdetailsDao.findMyorderdetails(order_no);
 			System.out.println(JSON.toJSONString(myorders));
 			out.print(JSON.toJSONString(myorders));

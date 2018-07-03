@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	$.ajax({
 		async : false,
-		type : "POST",
+		type : "GET",
 		url : "myprofile?account=a",
 		data : {},
 		datatype : "json",

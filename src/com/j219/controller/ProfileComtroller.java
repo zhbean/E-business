@@ -23,16 +23,16 @@ public class ProfileComtroller {
 	@Autowired
 	private ProfileDao profileDao;
 
-	@RequestMapping(value="/myprofile")
+	@RequestMapping(value="/myprofile",produces="text/html;charset=UTF-8")
 	public void myprofile(String account, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		PrintWriter out = response.getWriter();
-		response.setContentType("text/json;charset=UTF-8");
 		request.setCharacterEncoding("utf-8");
 		response.setHeader("Content-Type", "text/html;charset=utf-8");
 		
 		System.out.println(account);
 
 		try {
+			response.setContentType("text/json;charset=UTF-8");
 			List<Profile> profile = profileDao.findProfile(account);
 			System.out.println(JSON.toJSONString(profile));
 			out.write(JSON.toJSONString(profile));
