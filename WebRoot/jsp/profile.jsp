@@ -40,15 +40,15 @@
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="#">账户信息 <span class="sr-only">(current)</span></a></li>
 				<li><a href="#">账户安全</a></li>
-				<li><a href="#">我的订单</a></li>
-				<li><a href="#">收货地址</a></li>
+				<li><a href="<%=basePath%>jsp/myorders.jsp">我的订单</a></li>
+				<li><a href="<%=basePath%>jsp/myaddress.jsp">收货地址</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">账户信息 <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="#">账户安全</a></li>
-						<li><a href="#">我的订单</a></li>
-						<li><a href="#">收货地址</a></li>
+						<li><a href="<%=basePath%>jsp/myorders.jsp">我的订单</a></li>
+						<li><a href="<%=basePath%>jsp/myaddress.jsp">收货地址</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a href="#">我的金币</a></li>
 					</ul></li>
@@ -60,8 +60,8 @@
 				<button type="submit" class="btn btn-default">搜索</button>
 			</form>
 			<ul class="nav navbar-nav navbar-right">
-			<li><a href="#">购物车</a></li>
-				<li><a href="#">注销</a></li>
+			<li><a href="<%=basePath%>cart.jsp">购物车</a></li>
+				<li><a href="<%=basePath%>Login.jsp">注销</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -87,9 +87,9 @@
 			<ul class="list-group">
 				<li class="list-group-item">账户信息</li>
 				<li class="list-group-item">账户安全</li>
-				<li class="list-group-item">我的订单</li>
-				<li class="list-group-item">收货地址</li>
-				<li class="list-group-item">我的金币</li>
+				<li class="list-group-item"><a href="<%=basePath%>jsp/myorders.jsp">我的订单</a></li>
+				<li class="list-group-item"><a href="<%=basePath%>jsp/myaddress.jsp">收货地址</a></li>
+				<!-- //<li class="list-group-item">我的金币</li> -->
 			</ul>
 		</div>
 		<div style="flex-grow:1">

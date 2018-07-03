@@ -1,11 +1,15 @@
 $(document).ready(function() {
-
+	var te = '${upsuccess}';
+	console.log(te);
+	if("true"== '${upsuccess}') alert("修改成功");
+	
+	
 	var account = getAccount();
 	//alert(account);
 
 	$.ajax({
 		async : false,
-		type : "GET",
+		type : "GET",//临时修改
 		url : "myaddress?account=a", //+account,
 		data : {},
 		datatype : "json",
@@ -59,5 +63,34 @@ $(function() {
 			}
 		})
 
+	})
+	$("#newaddress").click(function() {
+		$("#opt-address").html = "";
+
+		
+		$.ajax({
+			async : false,
+			type : "GET",
+			url : "addaddress",//?account=a",
+			data : {},
+			datatype : "json",
+			success : function(result) {
+				
+				$("#opt-address").prepend('<div class="panel panel-default" id="add-adpanel"></div>');
+				$("#add-adpanel").append('<form action="addaddress" type="post" id="add-adform">');
+				$("#add-adform").append('<input	name="account" type="hidden" value=a>');
+				$("#add-adform").append('收货人：<input	name="buyer_name" type="text" class="form-control" >');
+				$("#add-adform").append('所在地区：<input name="area" type="text" class="form-control" >');
+				$("#add-adform").append('收货地址：<input name="address_detail" type="text" class="form-control" >');
+				$("#add-adform").append('电话：<input name="phone_number" type="text" class="form-control" >');
+				$("#add-adform").append('<button type="submit" class="btn btn-primary" id="btnaddaddress">添加收货地址</button>');
+				
+				
+			},
+			error : function(result) {
+				console.log("失败" + result);
+			}
+		})
+		
 	})
 })

@@ -69,20 +69,40 @@ public class MyAddressController {
 	}
 	
 	@RequestMapping(value="/updateaddress")
-	public ModelAndView updateaddress(String address_no,String address_details,String area, String buyer_name,String phone_number, HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public ModelAndView updateaddress(String address_no,String address_detail,String area, String buyer_name,String phone_number, HttpServletRequest request, HttpServletResponse response) throws IOException {
 		System.out.println(address_no);
-		System.out.println(address_details);
+		System.out.println(address_detail);
 		System.out.println(area);
 		System.out.println(buyer_name);
 		System.out.println(phone_number);
 		try {
-			myAddressDao.updateAddress(address_no,address_details,area,buyer_name, phone_number);
+			myAddressDao.updateAddress(address_no,address_detail,area,buyer_name, phone_number);
 			System.out.println("修改成功");
 			ModelAndView mv = new ModelAndView();
 			mv.setViewName("myaddress");
 			mv.addObject("upsuccess",true);
 
 			return mv;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new ModelAndView("redirect:/jsp/myaddress.jsp");
+		}
+	}
+	
+	
+	@RequestMapping(value="/addaddress")
+	public ModelAndView addaddress(String account,String address_detail,String area, String buyer_name,String phone_number, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		System.out.println("账号"+account);
+		System.out.println(address_detail);
+		System.out.println(area);
+		System.out.println(buyer_name);
+		System.out.println(phone_number);
+		try {
+			myAddressDao.addAddress(account,address_detail,area,buyer_name, phone_number);
+			System.out.println("创建成功");
+			return new ModelAndView("redirect:/jsp/myaddress.jsp");
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -28,7 +28,7 @@
 	$(document).ready(function(){
 	var a="<%=request.getParameter("LoginError") %>";
 	if(a!="null"&&a!=""){$("#LoginError").text(a)}
-	signup.jsp
+
 	
 });
 </script>

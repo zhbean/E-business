@@ -54,19 +54,19 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">账户信息 <span class="sr-only">(current)</span></a></li>
+				<li class="active"><a href="<%=basePath%>jsp/profile.jsp">账户信息 <span class="sr-only">(current)</span></a></li>
 				<li><a href="#">账户安全</a></li>
-				<li><a href="#">我的订单</a></li>
-				<li><a href="#">收货地址</a></li>
+				<li><a href="<%=basePath%>jsp/myorders.jsp">我的订单</a></li>
+				<li><a href="<%=basePath%>jsp/myaddress.jsp">收货地址</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">账户信息 <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="#">账户安全</a></li>
-						<li><a href="#">我的订单</a></li>
-						<li><a href="#">收货地址</a></li>
+						<li><a href="<%=basePath%>jsp/myorders.jsp">我的订单</a></li>
+						<li><a href="<%=basePath%>jsp/myaddress.jsp">收货地址</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="#">我的金币</a></li>
+						<!-- <li><a href="#">我的金币</a></li> -->
 					</ul></li>
 			</ul>
 			<form class="navbar-form navbar-left">
@@ -76,7 +76,7 @@
 				<button type="submit" class="btn btn-default">搜索</button>
 			</form>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">购物车</a></li>
+				<li><a href="<%=basePath%>cart.jsp">购物车</a></li>
 				<li><a href="#">注销</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"

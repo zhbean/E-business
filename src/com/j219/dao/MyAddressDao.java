@@ -11,4 +11,7 @@ public interface MyAddressDao {
 	public List<MyAddress> findMyAddress(String account);
 	
 	public int updateAddress(@Param("address_no") String address_no,@Param("address_detail") String address_detail,@Param("area") String area,@Param("buyer_name") String buyer_name,@Param("phone_number") String phone_number);
+
+	public int addAddress(@Param("account") String account,@Param("address_detail") String address_detail,@Param("area") String area,@Param("buyer_name") String buyer_name,@Param("phone_number") String phone_number);
+
 }

@@ -35,7 +35,7 @@ $(document).ready(function() {
 			} else {
 				$("#sex-non").prop("checked", true);
 			}
-			alert($("input:radio[name='sex']:checked").val())
+			//alert($("input:radio[name='sex']:checked").val())
 			if (result[0].gold_coin != null) {
 				$("#gold-coin").text(result[0].gold_coin);
 			}
