@@ -19,7 +19,7 @@
 	
 	$("#LoginButton").click(function(){Login();});
 	$("#signupButton").click(function(){
-		window.location.href="signup"; 
+		window.location.href="jsp/signup.jsp"; 
 	});
 	
 });

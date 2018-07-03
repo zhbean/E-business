@@ -1,8 +1,8 @@
 @CHARSET "UTF-8";
 
 .a {
-	margin: 0 18% auto;
-	
+	margin: auto;
+	width:1190px;
 }
 .b{
 	color:red;

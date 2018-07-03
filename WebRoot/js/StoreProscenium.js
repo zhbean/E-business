@@ -35,8 +35,8 @@ function Search(){
 		});
 
 }
-function getbulletins(){
-	var a="bulletin";
+function  getCartCount(){
+	var a;
 	
-	return a;
+	
 }

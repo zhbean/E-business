@@ -8,7 +8,7 @@
         <result property="torderCount" column="torderCount" />
         <result property="bulletinstit" column="bulletin_title" />
   		 <result property="bulletins" column="bulletin_content" />
-        
+        <result property="cartCount" column="CartCount" />
     </resultMap>
     <select id="getGoodsname" parameterType="java.lang.String"
         resultMap="Map">
@@ -29,6 +29,11 @@
     <select id="getbulltins" parameterType="java.lang.String"
         resultMap="Map">
         select bulletin_content from bulletins where bulletin_title=#{bulletinstit}
+    </select>
+    
+     <select id="getCartCountByAccount" parameterType="java.lang.String"
+        resultMap="Map">
+        select count(*) CartCount from cart_details where account=#{account}
     </select>
     
 </mapper>

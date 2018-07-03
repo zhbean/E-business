@@ -13,4 +13,5 @@ public interface GoodsTwoDao {
 	public GoodsTwo getTOrdersCountByAccount(@Param("account") String account);
 	public List<GoodsTwo> getbulltinstitle();
 	public List<GoodsTwo> getbulltins(@Param("bulletinstit") String bulletinstit);
+	public GoodsTwo getCartCountByAccount(@Param("account") String account);
 }

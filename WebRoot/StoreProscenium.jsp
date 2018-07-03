@@ -39,10 +39,19 @@ $(document).ready(function(){
 	$("#UserImg").append("<a href=ManagerShopIndex.jsp><img src=image/013.jpg class=img-circle></a>");
 	$("#Userlo").append("<a href=ManagerShopIndex.jsp><h2>"+username+"</h2></a>");
 	$("#selord").click(function(){
-	getcount(account);
-		
-		
+	getcount(account);	
 	});
+	$.ajax({
+		type : 'post',
+		async : false,
+		url : "CartCount",
+		data : {account:account},
+		dataType : 'json', //返回数据形式为json
+		success : function(result) {
+			$("#CartCount").text(result);
+			}
+			// set the new data
+		});
 	}
 	else{
 	$("#UserLogin").append("<a href=Login.jsp><span id='user'class='b'>登录/注册</span></a>");
@@ -137,9 +146,9 @@ $(document).ready(function(){
 					</div>
 					<!--                     购物车                         -->
 					<div class="col-xs-2 ">
-						<button class="btn btn-default ">
+						<button class="btn btn-default " id="cartButton">
 							<span class="glyphicon glyphicon-shopping-cart "></span> <span>我的购物车</span><span
-								class="badge ">0</span>
+								class="badge " id="CartCount">0</span>
 						</button>
 					</div>
 

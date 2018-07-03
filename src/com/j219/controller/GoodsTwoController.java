@@ -115,6 +115,26 @@ public class GoodsTwoController {
 			e.printStackTrace();
 		}
 	}
+	@RequestMapping("/CartCount")
+	public void getCartCount(HttpServletRequest req,HttpServletResponse res,String account) throws IOException{
+
+		System.out.println("调用oller");
+		GoodsTwo cartcount =goodsTwoDao.getCartCountByAccount(account);
+		List<GoodsTwo> cartlist = new ArrayList<GoodsTwo>();
+		try {
+			res.setContentType("text/json;charset=UTF-8");
+			PrintWriter out;
+			out = res.getWriter();
+			//ajax接收到商品数组
+			out.write(JSON.toJSONString(cartcount.getCartCount()));
+			System.out.print(JSON.toJSONString(cartcount.getCartCount()));
+			System.out.print("JSON后输出");
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
 
 

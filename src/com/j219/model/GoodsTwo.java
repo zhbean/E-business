@@ -4,6 +4,7 @@ public class GoodsTwo {
 	private String goodsname;
 	private int ordersCount=0;
 	private int torderCount=0;
+	private int CartCount=0;
 	private String bulletinstit;
 	private String bulletins;
 	
@@ -31,11 +32,6 @@ public class GoodsTwo {
 		this.torderCount = torderCount;
 	}
 
-	
-
-	
-
-
 	public String getBulletinstit() {
 		return bulletinstit;
 	}
@@ -51,4 +47,14 @@ public class GoodsTwo {
 	public void setBulletins(String bulletins) {
 		this.bulletins = bulletins;
 	}
+
+	public int getCartCount() {
+		return CartCount;
+	}
+
+	public void setCartCount(int cartCount) {
+		CartCount = cartCount;
+	}
+
+	
 }
