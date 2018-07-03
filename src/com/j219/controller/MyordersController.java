@@ -26,16 +26,16 @@ public class MyordersController {
 	@Autowired
 	private MyorderDetailsDao myorderdetailsDao;
 
-	@RequestMapping(value = "/myorders")
+	@RequestMapping(value = "/myorders",produces="text/html;charset=UTF-8")
 	public void myorder(String account, HttpServletRequest request, HttpServletResponse response) throws IOException {
-		PrintWriter out = response.getWriter();
-		response.setContentType("text/json;charset=UTF-8");
-		request.setCharacterEncoding("UTF-8");
-		response.setHeader("Content-Type", "text/html;charset=UTF-8");
+//		request.setCharacterEncoding("UTF-8");
+//		response.setHeader("Content-Type", "text/html;charset=UTF-8");
 
 		System.out.println(account);
 
 		try {
+			response.setContentType("text/json;charset=UTF-8");
+			PrintWriter out = response.getWriter();
 			List<Myorders> myorders = myordersDao.findMyorders(account);
 			System.out.println(JSON.toJSONString(myorders));
 			out.print(JSON.toJSONString(myorders));
@@ -50,13 +50,13 @@ public class MyordersController {
 	@RequestMapping(value = "/myorderdetails")
 	public void myorderdetail(String order_no, HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
-		PrintWriter out = response.getWriter();
 		response.setContentType("text/json;charset=UTF-8");
 		response.setHeader("Content-Type", "text/html;charset=UTF-8");
 
 		System.out.println(order_no);
 
 		try {
+			PrintWriter out = response.getWriter();
 			request.setCharacterEncoding("UTF-8");
 			List<MyorderDetails> myorders = myorderdetailsDao.findMyorderdetails(order_no);
 			System.out.println(JSON.toJSONString(myorders));
