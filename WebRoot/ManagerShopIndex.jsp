@@ -69,10 +69,8 @@
 						<div class="secondary">
 							<h3 id="addGoodsBt">添加商品</h3>
 							<h3 id="modifySku">修改库存</h3>
-							<h3 id="ShowGoodsList">在售商品</h3>
-							<h3>下架商品</h3>
-							<h3>定时商品</h3>
-							<h3>回收站</h3>
+							<h3 id="ShowGoodsList">商品列表</h3>
+							<h3 id="ShowDeleteGoodsBt">删除商品</h3>
 						</div>
 					</li>
 					<li>
@@ -81,9 +79,6 @@
 						</h2>
 						<div class="secondary">
 							<h3 id="ShowOrdersList">订单列表</h3>
-							<h3>打印订单</h3>
-							<h3>配送</h3>
-							<h3>退款列表</h3>
 						</div>
 					</li>
 					<li>
@@ -92,9 +87,6 @@
 						</h2>
 						<div class="secondary">
 							<h3 id="ShowUsersList">用户列表</h3>
-							<h3>积分设置</h3>
-							<h3>会员等级</h3>
-							<h3>管理员组</h3>
 						</div>
 					</li>
 					<li>
@@ -103,9 +95,6 @@
 						</h2>
 						<div class="secondary">
 							<h3 onclick="GotoHomePage()">导航菜单</h3>
-							<h3>商城帮助</h3>
-							<h3>友情链接</h3>
-							<h3>banner流动广告</h3>
 						</div>
 					</li>
 				</ul>
@@ -131,13 +120,41 @@
 				type="text" class="form-control" placeholder="商品库存">
 			<button id="BtmodifyGoods" class="btn btn-primary"
 				style="width:200px;height:50px;" onclick="modifyGoodsInf()">修改商品信息</button>
-		</div>0
-
-		<!-- 模态框  -->
-		<button id="addGoods" type="button" class="btn btn-primary btn-lg"
+		</div>
+		<!-- 两个模态框激活按钮 -->
+		<button id="deleteGoodsBt" type="button" class="btn btn-primary"
+			data-toggle="modal" data-target="#DeleteModal">删除商品
+		</button>
+		
+		<button id="addGoodsModal" type="button" class="btn btn-primary"
 			data-toggle="modal" data-target="#AddModal">添加商品
 		</button>
+		<!-- 删除商品模态框  -->
+		<div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">请输入想要删除的商品编号和商品详情号</h4>
+					</div>
+					<div class="modal-body">
+							<input id="DeleteGoods_no" type="text" class="form-control" placeholder="商品编号">
+							<input id="DeleteSpec_no" type="text" class="form-control" placeholder="商品详情号">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<button id="deleteGoods" type="button" class="btn btn-primary">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
+		<!-- 添加商品模态框  -->
 		<div class="modal fade" id="AddModal" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">
@@ -156,11 +173,12 @@
 							<input id="modal_goods_discount" type="text" class="form-control" placeholder="商品折扣">
 							<input id="modal_goods_status" type="text" class="form-control" placeholder="商品状态">
 							 <select id="modal_select1" class="selectpicker">
-							<option value="sort_a">食物</option>
-							<option value="sort_b">数码</option>
-							<option value="sort_c">衣服</option>
-							<option value="sort_d">书籍</option>
-							<option value="sort_e">牛奶</option>
+							<option value="sort_a">牛奶</option>
+							<option value="sort_b">电子产品</option>
+							<option value="sort_c">书籍</option>
+							<option value="sort_d">军事</option>
+							<option value="sort_e">家用电器</option>
+							<option value="sort_f">其他</option>
 						</select> 
 						<select id="modal_select2" class="selectpicker">
 							<option value="brand_a">苹果</option>
@@ -168,6 +186,12 @@
 							<option value="brand_c">一加</option>
 							<option value="brand_d">蒙牛</option>
 							<option value="brand_e">伊利</option>
+							<option value="brand_f">其他</option>
+							<option value="brand_g">杂货单专属</option>
+							<option value="brand_h">伊利</option>
+							<option value="brand_i">旺旺</option>
+							<option value="brand_j">光明</option>
+							<option value="brand_k">格力</option>
 						</select> 
 							<input id="modal_spec_no" type="text" class="form-control" placeholder="商品详情号">
 							<input id="modal_spec_type" type="text" class="form-control" placeholder="商品规格"><!-- GoodsList未显示 -->
@@ -218,8 +242,6 @@
 							label : '商品状态',
 							name : 'goods_status',
 							width : 60,
-							sorttype : 'integer',
-							formatter : 'number',
 						},
 						{
 							label : '商品分类',
@@ -275,7 +297,7 @@
 									goods_no : result[i].goods_no,
 									goods_name : result[i].goods_name,
 									goods_discount : result[i].goods_discount,
-									goods_status : "在售商品",
+									goods_status : result[i].goods_status,
 									sort_no : result[i].sort_no,
 									brand_no : result[i].brand_no,
 									spec_no : result[i].spec_no,
@@ -301,10 +323,11 @@
 		<script>
 			$("#ShowUsersList").click(function() {
 				$("#BtmodifyGoods").hide();
-				$("#addGoods").hide();
 				$("#spec_no").hide();
 				$("#price").hide();
 				$("#sku").hide();
+				$("#deleteGoodsBt").hide();
+				$("#addGoodsModal").hide();
 				$("#jqTurn").empty();
 				$("#jqTurn").append('<table id="jqlist"></table><div id="jqGridPager"></div>');
 				$("#jqlist").jqGrid({
@@ -412,10 +435,11 @@
 		<script>
 			$("#ShowOrdersList").click(function() {
 				$("#BtmodifyGoods").hide();
-				$("#addGoods").hide();
 				$("#spec_no").hide();
 				$("#price").hide();
 				$("#sku").hide();
+				$("#deleteGoodsBt").hide();
+				$("#addGoodsModal").hide();
 				$("#jqTurn").empty();
 				$("#jqTurn").append('<table id="jqlist"></table><div id="jqGridPager"></div>');
 				$("#jqlist").jqGrid({

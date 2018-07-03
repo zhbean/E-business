@@ -3,7 +3,7 @@
 <mapper namespace="com.j219.dao.AddNewGoodsMapper">
 
     <insert id="addNewGoodsTableGoods">
-        insert into goods values(#{goods_no},#{goods_name},#{goods_discount},#{goods_status},#{sort_no},#{brand_no});
+        insert into goods(goods_no,goods_name,goods_discount,goods_status,sort_no,brand_no) values(#{goods_no},#{goods_name},#{goods_discount},#{goods_status},#{sort_no},#{brand_no});
     </insert> 
     
     <insert id="addNewGoodsTableSpec">

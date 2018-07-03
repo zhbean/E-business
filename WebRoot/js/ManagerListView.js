@@ -9,9 +9,9 @@ function fetchGoodsData() {
 		data : {},
 		dataType : 'json', //返回数据形式为json
 		success : function(result) {
-			console.log(result);
+//			console.log(result);
 			for (var i = 0; i < Object.keys(result).length; i++) {
-				gridArrayData.push({
+				gridArrayData.push({ 
 					goods_no : result[i].goods_no,
 					goods_name : result[i].goods_name,
 					goods_discount : result[i].goods_discount,
@@ -41,18 +41,21 @@ $(document).ready(function(){
   $("#spec_no").hide();
   $("#price").hide();
   $("#sku").hide();
-  $("#addGoods").hide();
+  $("#deleteGoodsBt").hide();
+  $("#addGoodsModal").hide();
   $("#modifySku").click(function () {
 	  $("#spec_no").show();
 	  $("#price").show();
 	  $("#sku").show();
-	  $("#addGoods").show();
+	  $("#BtmodifyGoods").show();
   });
   $("#addGoodsBt").click(function () {
-	  $("#addGoods").show();
+	  $("#addGoodsModal").show();
+  });
+  $("#ShowDeleteGoodsBt").click(function () {
+	  $("#deleteGoodsBt").show();
   });
   $("#addNewGoods").click(function () {
-		alert("提交");
 		var modal_goods_no = document.getElementById("modal_goods_no").value;
 		var modal_goods_name = document.getElementById("modal_goods_name").value;
 		var modal_goods_discount = document.getElementById("modal_goods_discount").value;
@@ -63,16 +66,6 @@ $(document).ready(function(){
 		var modal_spec_type = document.getElementById("modal_spec_type").value;
 		var modal_price = document.getElementById("modal_price").value;
 		var modal_sku = document.getElementById("modal_sku").value;
-		console.log(modal_goods_no);
-		console.log(modal_goods_name);
-		console.log(modal_goods_discount);
-		console.log(modal_goods_status);
-		console.log(modal_select1);
-		console.log(modal_select2);
-		console.log(modal_spec_no);
-		console.log(modal_spec_type);
-		console.log(modal_price);
-		console.log(modal_sku);
 		$.ajax({
 			type : 'post',
 			async : false,
@@ -93,8 +86,36 @@ $(document).ready(function(){
 		        alert("修改失败")
 		    }
 			});
-	})
-});
+	}
+  );
+  $("#deleteGoods").click(function (){
+		var spec_no = document.getElementById("DeleteSpec_no").value;
+		var goods_no = document.getElementById("DeleteGoods_no").value;
+		console.log(goods_no);
+		console.log(spec_no);
+		$.ajax({
+			type : 'post',
+			async : false,
+			url : "DeleteGoodsById",
+			data : {"goods_no":goods_no,"spec_no":spec_no},
+			dataType : 'json', //返回数据形式为json
+			success : function(result) {
+				fetchGoodsData();
+				console.log("成功");
+				alert("修改成功！");
+				},
+			error : function(){
+				console.log("失败");
+		        alert("修改失败")
+		    }
+			});
+	}
+  );
+  
+}	
+
+);
+
 
 function modifyGoodsInf() {
 	var spec_no = document.getElementById("spec_no").value;
@@ -117,4 +138,5 @@ function modifyGoodsInf() {
 	    }
 		});
 }
+
 
