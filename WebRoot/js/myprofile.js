@@ -9,7 +9,6 @@ $(document).ready(function() {
 			console.log(result);
 			console.log(result[1].account);
 			if (result[0].account != null) {
-
 				$("#myaccount").val(result[0].account);
 			}
 			if (result[0].username != null) {

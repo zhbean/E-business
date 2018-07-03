@@ -34,6 +34,7 @@ public class ProfileComtroller {
 
 		try {
 			List<Profile> profile = profileDao.findProfile(account);
+			System.out.println(JSON.toJSONString(profile));
 			out.write(JSON.toJSONString(profile));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
