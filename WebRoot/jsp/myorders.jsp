@@ -124,7 +124,7 @@
 			<!-- 登录模块图片区 -->
 			<img src=image/013.jpg class=img-circle>
 			<div>
-				<font id="gold-coin"></font>金币
+				<font id="gold-coin"></font>
 			</div>
 		</div>
 	</div>
@@ -143,28 +143,50 @@
 					{
 						label : '订单编号',
 						name : 'order_no',
-						width : 100,
+						width : 85,
 						key : true
 					},
 					{
 						label : '订单时间',
 						name : 'order_time',
-						width : 100
+						width : 85
 					},
 					{
 						label : '物流公司',
 						name : 'express_name',
-						width : 90
+						width : 50
 					},
 					{
 						label : '金额',
 						name : 'sum_price',
-						width : 50
+						width : 40
+					},
+					{
+						label : '订单状态',
+						name : 'order_status',
+						width : 60
+					},
+					{
+						label : '支付',
+						name : 'pay_btn',
+						width : '30',
+						formatter : function(cellvalue, options, rowObject) {
+							// do something here
+							console.log(cellvalue)
+							var new_format_value = '<a href="<%=basePath%>#.jsp"><button type="button">去支付</button></a>'
+							return new_format_value
+						}
 					},
 					{
 						label : '退货',
 						name : 'returns',
-						width : 20,
+						width : 30,
+						formatter : function(cellvalue, options, rowObject) {
+							// do something here
+							console.log(cellvalue)
+							var new_format_value = '<a href="<%=basePath%>#.jsp"><button type="button">Click Me!</button></a>'
+							return new_format_value
+						}
 					},
 					{
 						label : '操作',
@@ -222,7 +244,7 @@
 							formatter : function(cellvalue, options, rowObject) {
 								// do something here
 								console.log(cellvalue)
-								var new_format_value='<a href="<%=basePath%>StoreProscenium.jsp"><img alt="杂货铺" src="'+cellvalue+'" height=50px></a>'
+								var new_format_value = '<a href="<%=basePath%>StoreProscenium.jsp"><img alt="杂货铺" src="' + cellvalue + '" height=50px></a>'
 								return new_format_value
 							}
 						},
