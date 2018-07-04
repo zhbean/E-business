@@ -218,24 +218,24 @@ $(document).ready(function(){
 
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox">
-						<div class="item active">
-							<a href="MyJsp.jsp" target="_blank"><img src="image/001.jpg"
-								alt="..."></a>
-							<div class="carousel-caption"></div>
+						<div class="item active lunbotu">
+							<a href="MyJsp.jsp" target="_blank"><img src="goodsimg/xiaomi8.jpg"
+								class="lunbotu"></a>
+							<div class="carousel-caption"><h1 class="b">小米8震撼来袭<br><small >使用了晓龙845</small></h1></div>
 						</div>
-						<div class="item">
-							<a href="MyJsp.jsp" target="_blank"><img src="image/002.jpg"
-								alt="..."></a>
-							<div class="carousel-caption"></div>
+						<div class="item lunbotu" >
+							<a href="MyJsp.jsp" target="_blank"><img src="goodsimg/yilichunniunai.jpg"
+								class="lunbotu"></a>
+							<div class="carousel-caption"><h1 class="b"><small >惊爆价</small>¥30</h1></div>
 						</div>
-						<div class="item ">
+						<div class="item lunbotu">
 							<a href="MyJsp.jsp" target="_blank"><img src="image/003.jpg"
-								alt="..."></a>
+								class="lunbotu"></a>
 							<div class="carousel-caption"></div>
 						</div>
-						<div class="item">
+						<div class="item lunbotu">
 							<a href="MyJsp.jsp" target="_blank"><img src="image/004.jpg"
-								alt="..."></a>
+								class="lunbotu"></a>
 							<div class="carousel-caption"></div>
 						</div>
 					</div>
