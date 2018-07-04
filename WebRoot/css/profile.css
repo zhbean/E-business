@@ -14,3 +14,10 @@
 	backgroung-color:#fbdd8d;
 	flex-direction: row;
 }
+
+.my-body .detailshow{
+	margin-left:15px;
+	margin-right:15px;
+	flex-grow:1.5;
+	height:80%
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.j219.dao.MyAddressDao">
+
+	<update id="updateAddress" parameterType="com.j219.model.MyAddress">
+		update user_address set 
+		address_detail=#{address_detail},area=#{area},buyer_name=#{buyer_name},phone_number=#{phone_number}
+		where address_no=#{address_no}
+	</update>
+
+</mapper>

@@ -54,19 +54,19 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">账户信息 <span class="sr-only">(current)</span></a></li>
+				<li class="active"><a href="<%=basePath%>jsp/profile.jsp">账户信息 <span class="sr-only">(current)</span></a></li>
 				<li><a href="#">账户安全</a></li>
-				<li><a href="#">我的订单</a></li>
-				<li><a href="#">收货地址</a></li>
+				<li><a href="<%=basePath%>jsp/myorders.jsp">我的订单</a></li>
+				<li><a href="<%=basePath%>jsp/myaddress.jsp">收货地址</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">账户信息 <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="#">账户安全</a></li>
-						<li><a href="#">我的订单</a></li>
-						<li><a href="#">收货地址</a></li>
+						<li><a href="<%=basePath%>jsp/myorders.jsp">我的订单</a></li>
+						<li><a href="<%=basePath%>jsp/myaddress.jsp">收货地址</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="#">我的金币</a></li>
+						<!-- <li><a href="#">我的金币</a></li> -->
 					</ul></li>
 			</ul>
 			<form class="navbar-form navbar-left">
@@ -76,7 +76,7 @@
 				<button type="submit" class="btn btn-default">搜索</button>
 			</form>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">购物车</a></li>
+				<li><a href="<%=basePath%>cart.jsp">购物车</a></li>
 				<li><a href="#">注销</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -124,7 +124,7 @@
 			<!-- 登录模块图片区 -->
 			<img src=image/013.jpg class=img-circle>
 			<div>
-				<font id="gold-coin"></font>金币
+				<font id="gold-coin"></font>
 			</div>
 		</div>
 	</div>
@@ -143,28 +143,50 @@
 					{
 						label : '订单编号',
 						name : 'order_no',
-						width : 100,
+						width : 85,
 						key : true
 					},
 					{
 						label : '订单时间',
 						name : 'order_time',
-						width : 100
+						width : 85
 					},
 					{
 						label : '物流公司',
 						name : 'express_name',
-						width : 90
+						width : 50
 					},
 					{
 						label : '金额',
 						name : 'sum_price',
-						width : 50
+						width : 40
+					},
+					{
+						label : '订单状态',
+						name : 'order_status',
+						width : 60
+					},
+					{
+						label : '支付',
+						name : 'pay_btn',
+						width : '35',
+						formatter : function(cellvalue, {rowId: rid}, rowObject) {
+							// do something here	
+							console.log(rid);
+							var new_format_value = '<a href="<%=basePath%>'+rid+'.jsp"><button type="button" style="width:60px">去支付</button></a>'
+							return new_format_value
+						}
 					},
 					{
 						label : '退货',
 						name : 'returns',
-						width : 20,
+						width : 30,
+						formatter : function(cellvalue, {rowId: rid}, rowObject) {
+							// do something here
+							console.log(cellvalue)
+							var new_format_value = '<a href="<%=basePath%>'+rid+'.jsp"><button type="button" style="width:50px">退货</button></a>'
+							return new_format_value
+						}
 					},
 					{
 						label : '操作',
@@ -221,10 +243,8 @@
 							width : 50,
 							formatter : function(cellvalue, options, rowObject) {
 								// do something here
-								
-								var strValue=$("#" + childGridID).jqGrid("getCell",cellvalue,1,true);
-								console.log(cellvalue);
-								var new_format_value = '<div id="goodsimg" ><img  alt="杂货铺" src="' + cellvalue + '" height=50px></div>'
+								console.log(cellvalue)
+								var new_format_value = '<img alt="杂货铺" src="' + cellvalue + '" height=50px></a>'
 								return new_format_value
 							}
 						},
