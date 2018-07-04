@@ -22,6 +22,7 @@
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 
+
 <script type="text/ecmascript" src="js/grid.locale-cn.js"></script>
 
 <script type="text/ecmascript" src="js/jquery.jqGrid.min.js"></script>
@@ -53,19 +54,19 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">账户信息 <span class="sr-only">(current)</span></a></li>
+				<li class="active"><a href="<%=basePath%>jsp/profile.jsp">账户信息 <span class="sr-only">(current)</span></a></li>
 				<li><a href="#">账户安全</a></li>
-				<li><a href="#">我的订单</a></li>
-				<li><a href="#">收货地址</a></li>
+				<li><a href="<%=basePath%>jsp/myorders.jsp">我的订单</a></li>
+				<li><a href="<%=basePath%>jsp/myaddress.jsp">收货地址</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">账户信息 <span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="#">账户安全</a></li>
-						<li><a href="#">我的订单</a></li>
-						<li><a href="#">收货地址</a></li>
+						<li><a href="<%=basePath%>jsp/myorders.jsp">我的订单</a></li>
+						<li><a href="<%=basePath%>jsp/myaddress.jsp">收货地址</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="#">我的金币</a></li>
+						<!-- <li><a href="#">我的金币</a></li> -->
 					</ul></li>
 			</ul>
 			<form class="navbar-form navbar-left">
@@ -75,7 +76,7 @@
 				<button type="submit" class="btn btn-default">搜索</button>
 			</form>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">购物车</a></li>
+				<li><a href="<%=basePath%>cart.jsp">购物车</a></li>
 				<li><a href="#">注销</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -112,7 +113,7 @@
 				<div style="margin-left:20px">
 					<h3>我的订单</h3>
 				</div>
-				<div >
+				<div>
 					<table id="jqGrid"></table>
 					<div id="jqGridPager"></div>
 					<br /> <br />
@@ -123,7 +124,7 @@
 			<!-- 登录模块图片区 -->
 			<img src=image/013.jpg class=img-circle>
 			<div>
-				<font id="gold-coin"></font>金币
+				<font id="gold-coin"></font>
 			</div>
 		</div>
 	</div>
@@ -133,7 +134,7 @@
 	
 		$(document).ready(function() {
 			$("#jqGrid").jqGrid({
-				async : false,
+				async : true,
 				url : 'myorders?account=a',
 				mtype : 'POST',
 				datatype : "json",
@@ -142,36 +143,58 @@
 					{
 						label : '订单编号',
 						name : 'order_no',
-						width : 100,
+						width : 85,
 						key : true
 					},
 					{
 						label : '订单时间',
 						name : 'order_time',
-						width : 100
+						width : 85
 					},
 					{
 						label : '物流公司',
 						name : 'express_name',
-						width : 90
+						width : 50
 					},
 					{
 						label : '金额',
 						name : 'sum_price',
-						width : 50
+						width : 40
+					},
+					{
+						label : '订单状态',
+						name : 'order_status',
+						width : 60
+					},
+					{
+						label : '支付',
+						name : 'pay_btn',
+						width : '35',
+						formatter : function(cellvalue, {rowId: rid}, rowObject) {
+							// do something here	
+							console.log(rid);
+							var new_format_value = '<a href="<%=basePath%>'+rid+'.jsp"><button type="button" style="width:60px">去支付</button></a>'
+							return new_format_value
+						}
 					},
 					{
 						label : '退货',
 						name : 'returns',
-						width : 20,
+						width : 30,
+						formatter : function(cellvalue, {rowId: rid}, rowObject) {
+							// do something here
+							console.log(cellvalue)
+							var new_format_value = '<a href="<%=basePath%>'+rid+'.jsp"><button type="button" style="width:50px">退货</button></a>'
+							return new_format_value
+						}
 					},
 					{
 						label : '操作',
 						name : "actions",
-						width : 20,
+						width : 30,
 						formatter : "actions",
 						formatoptions : {
-							keys : true,
+							url:"delmyorder?order_no=",
 							delOptions : {}
 						}
 					},
@@ -182,16 +205,16 @@
 				width : 900,
 				height : '70%',
 				rowNum : 20,
-				subGrid : true,
-				ubGridRowExpanded : showChildGrid, // javascript function that will take care of showing the child grid
-				subGridOptions : {
-					// expand all rows on load
-					expandOnLoad : true
-				},
 				rowList : [ 20, 30, 50 ],
 				rownumbers : true,
 				rownumWidth : 25,
 				multiselect : true,
+				subGrid : true,
+				subGridRowExpanded : showChildGrid, // javascript function that will take care of showing the child grid
+				subGridOptions : {
+					// expand all rows on load
+					"expandOnLoad" : true,
+				},
 				pager : "#jqGridPager"
 			});
 	
@@ -200,14 +223,15 @@
 				var childGridPagerID = parentRowID + "_pager";
 	
 				// send the parent row primary key to the server so that we know which grid to show
-				var childGridURL = parentRowKey + ".json";
+				//var childGridURL = parentRowKey + ".json";
+				console.log(parentRowKey);
 				//childGridURL = childGridURL + "&parentRowID=" + encodeURIComponent(parentRowKey)
 	
 				// add a table and pager HTML elements to the parent grid row - we will render the child grid here
 				$('#' + parentRowID).append('<table id=' + childGridID + '></table><div id=' + childGridPagerID + ' class=scroll></div>');
 	
 				$("#" + childGridID).jqGrid({
-					url : childGridURL,
+					url : "myorderdetails?order_no=" + parentRowKey,
 					mtype : "POST",
 					datatype : "json",
 					page : 1,
@@ -216,16 +240,29 @@
 							label : '商品图片',
 							name : 'goods_img',
 							key : true,
-							width : 50
+							width : 50,
+							formatter : function(cellvalue, options, rowObject) {
+								// do something here
+								console.log(cellvalue)
+								var new_format_value = '<img alt="杂货铺" src="' + cellvalue + '" height=50px></a>'
+								return new_format_value
+							}
 						},
 						{
 							label : '商品名称',
 							name : 'goods_name',
-							width : 100
+							width : 100,
+							//key:true,
+							formatter : function(cellvalue, options, rowObject) {
+								// do something here
+
+								var new_format_value = '<a id="goodsdetails" href="<%=basePath%>goodsdetails.jsp?goodsname="+cellvalue>'+cellvalue+'</a>'
+								return new_format_value
+							}
 						},
 						{
 							label : '商品规格',
-							name : 'spec',
+							name : 'spec_type',
 							width : 100
 						},
 						{
@@ -235,8 +272,11 @@
 						}
 					],
 					loadonce : true,
-					width : 750,
+					width : 780,
 					height : '100%',
+					/* loadComplete : (function() {
+							$('.glyphicon,.glyphicon-triangle-bottom,.glyphicon-triangle-right').trigger('click');
+					}), */
 					pager : "#" + childGridPagerID
 				});
 	
@@ -252,7 +292,15 @@
 			});
 		});
 	</script>
-
+	<script type="text/javascript">
+	 		$(function() {
+				$('#goodsimg').blur(function() {
+				$('#goodsdetails').trigger('click');
+					alert('button is clicking！');
+				});
+				
+			})
+	</script>
 
 </body>
 </html>

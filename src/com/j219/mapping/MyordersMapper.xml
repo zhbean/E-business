@@ -4,13 +4,17 @@
 
 	<select id="findMyorders" resultType="com.j219.model.Myorders">
 		select
-		order_details.order_no,orders.order_time,express.express_name,sum(order_details.discount_price)
+		order_details.order_no,orders.order_time,orders.order_status,express.express_name,sum(order_details.discount_price)
 		sum_price
 		from orders ,express ,order_details
 		where
-		#{account}=orders.account and orders.order_no=order_details.order_no and
+		#{account}=orders.account and orders.order_no=order_details.order_no
+		and
 		express.express_no=orders.express_no
-		group by order_details.order_no,orders.order_time,express.express_name
+		group by
+		order_details.order_no,orders.order_time,express.express_name,orders.order_status
 	</select>
+
+
 
 </mapper>

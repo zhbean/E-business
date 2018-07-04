@@ -1,4 +1,4 @@
-package com.j219.controller;
+ï»¿package com.j219.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,11 +24,11 @@ public class SignupConttroller {
 		
 		if (signupDao.hasAccount(account)!=null) {
 			hasAccount = true;
-			System.out.println("ÓĞÕËºÅ");
+			System.out.println("æœ‰è´¦å·");
 		}
 		if (signupDao.hasUsername(username)!=null) {
 			hasUsername = true;
-			System.out.println("ÓĞÓÃ»§Ãû");
+			System.out.println("æœ‰ç”¨æˆ·å");
 		}
 
 		ModelAndView mv = new ModelAndView();
@@ -36,17 +36,17 @@ public class SignupConttroller {
 		if (!hasAccount && !hasUsername) {
 			try {
 				signupDao.newSignup(username, account, password);
-				System.out.println("×¢²á³É¹¦");
+				System.out.println("æ³¨å†ŒæˆåŠŸ");
 				return new ModelAndView("redirect:/Login.jsp");
 			} catch (Exception e) {
 				System.out.println(e);
-				System.out.println("²åÈëÊ§°Ü");
+				System.out.println("æ’å…¥å¤±è´¥");
 				mv.setViewName("signup");
 				return mv;
 			}
 		}
 		else {
-			System.out.println("×¢²áÊ§°Ü");
+			System.out.println("æ³¨å†Œå¤±è´¥");
 			mv.setViewName("signup");
 			mv.addObject("hasAccount",hasAccount);
 			mv.addObject("hasUsername",hasUsername);

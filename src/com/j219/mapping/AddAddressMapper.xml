@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.j219.dao.MyAddressDao">
+
+	<insert id="addAddress" parameterType="com.j219.model.MyAddress">
+		insert into user_address
+		(address_no,account,buyer_name,area,address_detail,phone_number)
+		values
+		((select case when max(address_no) is null
+		then 1 else max(address_no)+1 end from user_address),
+		#{account},#{buyer_name},#{area},#{address_detail},#{phone_number});
+
+	</insert>
+
+</mapper>

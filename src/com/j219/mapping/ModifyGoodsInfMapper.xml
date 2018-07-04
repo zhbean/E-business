@@ -5,4 +5,5 @@
     <update id="modifyGoodsInf">
         update goods_details set price=#{price},sku=#{sku} where spec_no=#{spec_no}
     </update> 
+    
 </mapper>

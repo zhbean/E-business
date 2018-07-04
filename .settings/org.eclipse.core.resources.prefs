@@ -1,3 +1,7 @@
 eclipse.preferences.version=1
 encoding//WebRoot/bulletins.jsp=UTF-8
+<<<<<<< HEAD
 encoding//WebRoot/cart.jsp=UTF-8
+=======
+encoding/<project>=UTF-8
+>>>>>>> branch 'dev' of https://github.com/zhbean/E-business.git

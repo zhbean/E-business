@@ -23,17 +23,16 @@ public class ProfileComtroller {
 	@Autowired
 	private ProfileDao profileDao;
 
-	@RequestMapping(value="/myprofile")
+	@RequestMapping(value="/myprofile",produces="text/html;charset=UTF-8")
 	public void myprofile(String account, HttpServletRequest request, HttpServletResponse response) throws IOException {
-		PrintWriter out = response.getWriter();
-		response.setContentType("text/json;charset=UTF-8");
-		request.setCharacterEncoding("utf-8");
-		response.setHeader("Content-Type", "text/html;charset=utf-8");
 		
 		System.out.println(account);
 
 		try {
+			response.setContentType("text/json;charset=UTF-8");
+			PrintWriter out = response.getWriter();
 			List<Profile> profile = profileDao.findProfile(account);
+			System.out.println(JSON.toJSONString(profile));
 			out.write(JSON.toJSONString(profile));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -49,9 +48,9 @@ public class ProfileComtroller {
 		
 		ModelAndView mv = new ModelAndView();
 		
-		if("option1".equals(sex)) {sex = "ƒ–";}
-		else if("option2".equals(sex)) {sex = "≈Æ";}
-		else {sex = "±£√‹";}
+		if("option1".equals(sex)) {sex = "Áî∑";}
+		else if("option2".equals(sex)) {sex = "Â•≥";}
+		else {sex = "‰øùÂØÜ";}
 		
 		if (myusername!=null && sex!=null) {
 			try {
@@ -59,13 +58,13 @@ public class ProfileComtroller {
 				return new ModelAndView("redirect:/jsp/profile.jsp?account="+myaccount);
 			} catch (Exception e) {
 				System.out.println(e);
-				System.out.println("≤Â»Î ß∞‹");
+				System.out.println("ÔøΩÔøΩÔøΩÔøΩ ßÔøΩÔøΩ");
 				mv.setViewName("profile.jsp?account="+myaccount);
 				return mv;
 			}
 		}
 		else {
-			System.out.println("◊¢≤· ß∞‹");
+			System.out.println("Â§±Ë¥•");
 			mv.setViewName("profile.jsp?account="+myaccount);
 			return mv;
 		}
