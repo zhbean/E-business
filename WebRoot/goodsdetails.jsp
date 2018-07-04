@@ -224,7 +224,7 @@ $(document).ready(function(){
 							</div>
 						</div>
 						<div class="gds-sa-btsz">
-							<button class="btn btn-danger gds-sa-btz">加入购物车</button>
+							<button class="btn btn-danger gds-sa-btz" id="cartbtnId">加入购物车</button>
 						</div>
 					</div>
 
@@ -312,7 +312,31 @@ $(document).ready(function(){
 			}
 		});
 	});
+	$("#cartbtnId").click(function(){
+		var account="<%=session.getAttribute("account")%>";
+		var specno=$("#specId").val();
+		var goodscount=Number($("#countView").val());
+		var hef="insercart";
+		$.ajax({
+		type : 'post',
+		async : false,
+		url : "getcartno",
+		data : {account:account},
+		dataType : 'json', //返回数据形式为json
+		success : function(result) {
+		for(var i = 0; i < Object.keys(result).length; i++){
+			if(specno==result[i].specno){
+				goodscount=goodscount+Number(result[i].goodscount);
+				hef="updcart";
+			}
+				
+			}
 
+			window.location.href=hef+"?account="+account+"&&specno="+specno+"&&goodscount="+goodscount;
+			}
+		});
+		
+	});
 });
 </script>
 </html>

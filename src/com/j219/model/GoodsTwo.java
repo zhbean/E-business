@@ -2,12 +2,12 @@ package com.j219.model;
 
 public class GoodsTwo {
 	private String goodsname;
-	private int ordersCount=0;
-	private int torderCount=0;
-	private int CartCount=0;
+	private int ordersCount;
+	private int torderCount;
+	private int CartCount;
 	private String bulletinstit;
 	private String bulletins;
-	private float price=0;
+	private float price;
 	private String goodsimgadrs;
 	private String brandname;
 	private String spectype;

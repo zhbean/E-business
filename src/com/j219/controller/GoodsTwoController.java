@@ -138,7 +138,7 @@ public class GoodsTwoController {
 	@RequestMapping("/goodsdetails")
 	public void getGoodsDetails(HttpServletRequest req,HttpServletResponse res,String account) throws IOException{
 
-		System.out.println("µ÷ÓÃcontroller");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½controller");
 		 List<GoodsTwo> goodsDetailslist=new ArrayList<GoodsTwo>();
 		 goodsDetailslist=goodsTwoDao.getGoodDetails();
 		
@@ -147,10 +147,10 @@ public class GoodsTwoController {
 		try {
 			res.setContentType("text/json;charset=UTF-8");
 			out = res.getWriter();
-			//ajax½ÓÊÕµ½ÉÌÆ·Êý×é
+			//ajaxï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
 			out.write(JSON.toJSONString(goodsDetailslist));
 			System.out.print(JSON.toJSONString(goodsDetailslist));
-			System.out.print("JSONºóÊä³ö");
+			System.out.print("JSONï¿½ï¿½ï¿½ï¿½ï¿½");
 			out.flush();
 			out.close();
 		} catch (Exception e) {
@@ -160,7 +160,7 @@ public class GoodsTwoController {
 	@RequestMapping("/getgoods")
 	public void getGoodsbygoodsname(HttpServletRequest req,HttpServletResponse res,String goodsname) throws IOException{
 
-		System.out.println("µ÷ÓÃcontroller");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½controller");
 		 List<GoodsTwo> goodslist=new ArrayList<GoodsTwo>();
 		 goodslist=goodsTwoDao.getGoodDetailsBygoodsname(goodsname);
 		
@@ -168,10 +168,10 @@ public class GoodsTwoController {
 		try {
 			res.setContentType("text/json;charset=UTF-8");
 			out = res.getWriter();
-			//ajax½ÓÊÕµ½ÉÌÆ·Êý×é
+			//ajaxï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
 			out.write(JSON.toJSONString(goodslist));
 			System.out.print(JSON.toJSONString(goodslist));
-			System.out.print("JSONºóÊä³ö");
+			System.out.print("JSONï¿½ï¿½ï¿½ï¿½ï¿½");
 			out.flush();
 			out.close();
 		} catch (Exception e) {
@@ -181,7 +181,7 @@ public class GoodsTwoController {
 	@RequestMapping("/getprice")
 	public void getPrice(HttpServletRequest req,HttpServletResponse res,String specno) throws IOException{
 
-		System.out.println("µ÷ÓÃcontroller");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½controller");
 		 List<GoodsTwo> pricelist=new ArrayList<GoodsTwo>();
 		 pricelist=goodsTwoDao.getGoodsPrice(specno);
 		
@@ -189,10 +189,10 @@ public class GoodsTwoController {
 		try {
 			res.setContentType("text/json;charset=UTF-8");
 			out = res.getWriter();
-			//ajax½ÓÊÕµ½ÉÌÆ·Êý×é
+			//ajaxï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
 			out.write(JSON.toJSONString(pricelist));
 			System.out.print(JSON.toJSONString(pricelist));
-			System.out.print("JSONºóÊä³ö");
+			System.out.print("JSONï¿½ï¿½ï¿½ï¿½ï¿½");
 			out.flush();
 			out.close();
 		} catch (Exception e) {
@@ -202,7 +202,7 @@ public class GoodsTwoController {
 	@RequestMapping("/getaddress")
 	public void getAddress(HttpServletRequest req,HttpServletResponse res,String account) throws IOException{
 
-		System.out.println("µ÷ÓÃcontroller");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½controller");
 		 List<GoodsTwo> aderslist=new ArrayList<GoodsTwo>();
 		 aderslist=goodsTwoDao.getaddress(account);
 		
@@ -210,10 +210,10 @@ public class GoodsTwoController {
 		try {
 			res.setContentType("text/json;charset=UTF-8");
 			out = res.getWriter();
-			//ajax½ÓÊÕµ½ÉÌÆ·Êý×é
+			//ajaxï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
 			out.write(JSON.toJSONString(aderslist));
 			System.out.print(JSON.toJSONString(aderslist));
-			System.out.print("JSONºóÊä³ö");
+			System.out.print("JSONï¿½ï¿½ï¿½ï¿½ï¿½");
 			out.flush();
 			out.close();
 		} catch (Exception e) {
@@ -223,7 +223,7 @@ public class GoodsTwoController {
 	@RequestMapping("/getcartgoods")
 	public void getCartGoods(HttpServletRequest req,HttpServletResponse res,String account) throws IOException{
 
-		System.out.println("µ÷ÓÃcontroller");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½controller");
 		 List<GoodsTwo> cartlist=new ArrayList<GoodsTwo>();
 		 cartlist=goodsTwoDao.getCartGoods(account);
 		
@@ -231,10 +231,31 @@ public class GoodsTwoController {
 		try {
 			res.setContentType("text/json;charset=UTF-8");
 			out = res.getWriter();
-			//ajax½ÓÊÕµ½ÉÌÆ·Êý×é
+			//ajaxï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
 			out.write(JSON.toJSONString(cartlist));
 			System.out.print(JSON.toJSONString(cartlist));
-			System.out.print("JSONºóÊä³ö");
+			System.out.print("JSONï¿½ï¿½ï¿½ï¿½ï¿½");
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	@RequestMapping("/getcartno")
+	public void getCartNo(HttpServletRequest req,HttpServletResponse res,String account) throws IOException{
+
+		System.out.println("è°ƒç”¨controller");
+		 List<GoodsTwo> cartlist=new ArrayList<GoodsTwo>();
+		 cartlist=goodsTwoDao.getCartNo(account);
+		
+		PrintWriter out;
+		try {
+			res.setContentType("text/json;charset=UTF-8");
+			out = res.getWriter();
+			//ajaxï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
+			out.write(JSON.toJSONString(cartlist));
+			System.out.print(JSON.toJSONString(cartlist));
+			System.out.print("JSONï¿½ï¿½ï¿½ï¿½ï¿½");
 			out.flush();
 			out.close();
 		} catch (Exception e) {
@@ -243,8 +264,41 @@ public class GoodsTwoController {
 	}
 	@RequestMapping("/delcart")
 	public ModelAndView delcart(String specno, String account) {
-		System.out.println("µ÷ÓÃcontroller");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½controller");
 		goodsTwoDao.delCart(specno, account);
+		
+		ModelAndView mv = new ModelAndView();
+		
+			mv.setViewName("redirect:/cart.jsp");
+
+		return mv;
+	}
+	@RequestMapping("/insercart")
+	public ModelAndView insercart(String specno, String account, String goodscount) {
+		System.out.println("è°ƒç”¨controller");
+		System.out.println("è°ƒç”¨controller");
+		
+		try {
+			goodsTwoDao.inerCart(specno, account, goodscount);;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		ModelAndView mv = new ModelAndView();
+		
+			mv.setViewName("redirect:/cart.jsp");
+
+		return mv;
+	}
+	@RequestMapping("/updcart")
+	public ModelAndView updcart(String specno, String account, String goodscount) {
+		System.out.println("è°ƒç”¨controller");
+		System.out.println(specno);
+		try {
+			goodsTwoDao.updCart(specno, account, goodscount);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		
 		ModelAndView mv = new ModelAndView();
 		

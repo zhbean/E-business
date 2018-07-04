@@ -78,7 +78,18 @@
  		and goods_details.spec_no=spec.spec_no
   		and goods.goods_no=spec.goods_no
     </select>
+    <select id="getCartNo" parameterType="java.lang.String"
+        resultMap="Map">
+        select * from cart_details where account=#{account}
+    </select>
     <delete id="delCart" parameterType="java.lang.String">
 		delete from cart_details where account=#{account} and spec_no=#{specno}   
 		 </delete>
+		  <insert id="inerCart" parameterType="java.lang.String">
+		insert into cart_details values(#{account},#{specno},#{goodscount}) 
+		 </insert>
+		  <update id="updCart" parameterType="java.lang.String">
+			update cart_details set goods_count=#{goodscount}
+			where account=#{account} and spec_no=#{specno}
+		</update>
 </mapper>

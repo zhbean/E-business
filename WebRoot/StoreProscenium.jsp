@@ -193,12 +193,13 @@ $(document).ready(function(){
 		<div class="ce">
 			<div class="fl u">
 				<div class="text-center x">
+					
 					<ul class=" list-unstyled">
 
-						<li><a>手机</a><span>/</span><a>电脑</a><span>/</span><a>相机</a></li>
-						<li><a>手机</a><span>/</span><a>电脑</a><span>/</span><a>相机</a></li>
-						<li><a>手机</a><span>/</span><a>电脑</a><span>/</span><a>相机</a></li>
-						<li><a>手机</a><span>/</span><a>电脑</a><span>/</span><a>相机</a></li>
+						<li><a>苹果</a><span>/</span><a>小米</a><span>/</span><a>一加</a></li>
+						<li><a>蒙牛</a><span>/</span><a>伊利</a><span>/</span><a>其他</a></li>
+						<li><a>伊利</a><span>/</span><a>旺旺</a><span>/</span><a>光明</a></li>
+						<li><a>格力</a><span>/</span><a>杂货单专属</a></li>
 
 					</ul>
 				</div>
@@ -219,24 +220,24 @@ $(document).ready(function(){
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox">
 						<div class="item active lunbotu">
-							<a href="MyJsp.jsp" target="_blank"><img src="goodsimg/xiaomi8.jpg"
+							<a href="goodsdetails.jsp?goodsname=小米8" target="_blank"><img src="goodsimg/xiaomi8.jpg"
 								class="lunbotu"></a>
 							<div class="carousel-caption"><h1 class="b">小米8震撼来袭<br><small >使用了晓龙845</small></h1></div>
 						</div>
 						<div class="item lunbotu" >
-							<a href="MyJsp.jsp" target="_blank"><img src="goodsimg/yilichunniunai.jpg"
+							<a href="goodsdetails.jsp?goodsname=伊利纯牛奶" target="_blank"><img src="goodsimg/yilichunniunai.jpg"
 								class="lunbotu"></a>
 							<div class="carousel-caption"><h1 class="b"><small >惊爆价</small>¥30</h1></div>
 						</div>
 						<div class="item lunbotu">
-							<a href="MyJsp.jsp" target="_blank"><img src="image/003.jpg"
+							<a href="goodsdetails.jsp?goodsname=格力空调" target="_blank"><img src="goodsimg/geilikongtiao.jpg"
 								class="lunbotu"></a>
-							<div class="carousel-caption"></div>
+							<div class="carousel-caption"><h1 class="b">格力空调，好的选择</h1></div>
 						</div>
 						<div class="item lunbotu">
-							<a href="MyJsp.jsp" target="_blank"><img src="image/004.jpg"
+							<a href="goodsdetails.jsp?goodsname=一加6" target="_blank"><img src="goodsimg/yijia6.jpg"
 								class="lunbotu"></a>
-							<div class="carousel-caption"></div>
+							<div class="carousel-caption"><h1 class="b">一加6震撼来袭</h1></div>
 						</div>
 					</div>
 
@@ -254,16 +255,17 @@ $(document).ready(function(){
 			</div>
 			<div class="gt">
 				<div class="gt-a">
-					<a href="MyJsp.jsp" target="_blank"><img src="image/005.jpg"
-						alt="..." class="img-rounded"></a>
+					<a href="goodsdetails.jsp?goodsname=苹果x" target="_blank"><img src="goodsimg/iphone10.jpg"
+						alt="..." class="img-rounded inadm"></a>
+						
 				</div>
 				<div class="gt-a">
-					<a href="MyJsp.jsp" target="_blank"><img src="image/006.jpg"
-						alt="..." class="img-rounded"></a>
+					<a href="goodsdetails.jsp?goodsname=歼20" target="_blank"><img src="goodsimg/jian20.jpg"
+						alt="..." class="img-rounded inadm"></a>
 				</div>
 				<div class="gt-a">
-					<a href="MyJsp.jsp" target="_blank"><img src="image/008.jpg"
-						alt="..." class="img-rounded"></a>
+					<a href="goodsdetails.jsp?goodsname=95式自动步枪" target="_blank"><img src="goodsimg/95shibuqiang.jpg"
+						alt="..." class="img-rounded inadm"></a>
 				</div>
 			</div>
 			<div class="dlg">

@@ -19,5 +19,8 @@ public interface GoodsTwoDao {
 	public List<GoodsTwo> getGoodsPrice(@Param("specno") String specno);
 	public List<GoodsTwo> getaddress(@Param("account") String account);
 	public List<GoodsTwo> getCartGoods(@Param("account") String account);
+	public List<GoodsTwo> getCartNo(@Param("account") String account);
 	public void delCart(@Param("specno") String specno,@Param("account") String account);
+	public void inerCart(@Param("specno") String specno,@Param("account") String account,@Param("goodscount") String goodscount);
+	public void updCart(@Param("specno") String specno,@Param("account") String account,@Param("goodscount") String goodscount);
 }
