@@ -1,4 +1,4 @@
-package com.j219.controller;
+ï»¿package com.j219.controller;
 
 import java.io.IOException;
 
@@ -25,7 +25,7 @@ public class LoginController {
 
 	/*@RequestMapping("/LoginCheck")
 	public ModelAndView LoginCheck(String account, String password) {
-		System.out.println("µ÷ÓÃcontroller");
+		System.out.println("è°ƒç”¨controller");
 		Login login = loginDao.getUsernameByAccountAndpassword(account, password);
 		
 		ModelAndView mv = new ModelAndView();
@@ -39,7 +39,7 @@ public class LoginController {
 		} else {
 
 			mv.setViewName("redirect:/Login.jsp");
-			mv.addObject("LoginError", "ÕËºÅ»òÃÜÂë´íÎó");
+			mv.addObject("LoginError", "è´¦å·æˆ–å¯†ç é”™è¯¯");
 
 		}
 		return mv;
@@ -49,11 +49,14 @@ public class LoginController {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=UTF-8");
 		HttpSession session = request.getSession();
-		System.out.println("µ÷ÓÃcontroller");
-		Login login = loginDao.getUsernameByAccountAndpassword(account, password);
-		
 		ModelAndView mv = new ModelAndView();
-		if (login != null) {
+		System.out.println("è°ƒç”¨controller");
+		Login login = loginDao.getUsernameByAccountAndpassword(account, password);
+		if("admin".equals(account) && "123".equals(password)) {
+			mv.setViewName("redirect:/ManagerShopIndex.jsp");
+		}
+		
+		else if (login != null) {
 
 			mv.setViewName("redirect:/StoreProscenium.jsp");
 			mv.addObject("username", login.getUsername());
@@ -64,7 +67,7 @@ public class LoginController {
 		} else {
 
 			mv.setViewName("redirect:/Login.jsp");
-			mv.addObject("LoginError", "ÕËºÅ»òÃÜÂë´íÎó");
+			mv.addObject("LoginError", "è´¦å·æˆ–å¯†ç é”™è¯¯");
 
 		}
 		return mv;
