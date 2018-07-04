@@ -2,7 +2,7 @@ $(document).ready(function() {
 	$.ajax({
 		async : false,
 		type : "GET",
-		url : "myprofile?account=a",
+		url : "myprofile?account="+getAccount(),
 		data : {},
 		datatype : "json",
 		success : function(result) {

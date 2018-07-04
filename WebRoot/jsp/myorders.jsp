@@ -36,6 +36,10 @@
 	$.jgrid.defaults.width = 780;
 	$.jgrid.defaults.responsive = true;
 	$.jgrid.defaults.styleUI = 'Bootstrap';
+	function getAccount(){
+   　　var account="<%=session.getAttribute("account")%>"; 
+   return account;
+　　}
 </script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -54,7 +58,9 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="<%=basePath%>jsp/profile.jsp">账户信息 <span class="sr-only">(current)</span></a></li>
+				<li class="active"><a href="<%=basePath%>jsp/profile.jsp">账户信息
+						<span class="sr-only">(current)</span>
+				</a></li>
 				<li><a href="#">账户安全</a></li>
 				<li><a href="<%=basePath%>jsp/myorders.jsp">我的订单</a></li>
 				<li><a href="<%=basePath%>jsp/myaddress.jsp">收货地址</a></li>
@@ -77,7 +83,7 @@
 			</form>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="<%=basePath%>cart.jsp">购物车</a></li>
-				<li><a href="#">注销</a></li>
+				<li><a href="Login.jsp">注销</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -135,7 +141,7 @@
 		$(document).ready(function() {
 			$("#jqGrid").jqGrid({
 				async : true,
-				url : 'myorders?account=a',
+				url : 'myorders?account='+getAccount(),
 				mtype : 'POST',
 				datatype : "json",
 				colModel : [
@@ -173,7 +179,7 @@
 						formatter : function(cellvalue, {rowId: rid}, rowObject) {
 							// do something here	
 							console.log(rid);
-							var new_format_value = '<a href="<%=basePath%>'+rid+'.jsp"><button type="button" style="width:60px">去支付</button></a>'
+							var new_format_value = '<a href="<%=basePath%>' + rid + '.jsp"><button type="button" style="width:60px">去支付</button></a>'
 							return new_format_value
 						}
 					},
@@ -184,7 +190,7 @@
 						formatter : function(cellvalue, {rowId: rid}, rowObject) {
 							// do something here
 							console.log(cellvalue)
-							var new_format_value = '<a href="<%=basePath%>'+rid+'.jsp"><button type="button" style="width:50px">退货</button></a>'
+							var new_format_value = '<a href="<%=basePath%>' + rid + '.jsp"><button type="button" style="width:50px">退货</button></a>'
 							return new_format_value
 						}
 					},
@@ -194,7 +200,7 @@
 						width : 30,
 						formatter : "actions",
 						formatoptions : {
-							url:"delmyorder?order_no=",
+							url : "delmyorder?order_no=",
 							delOptions : {}
 						}
 					},
@@ -243,7 +249,7 @@
 							width : 50,
 							formatter : function(cellvalue, options, rowObject) {
 								// do something here
-								console.log(cellvalue)
+								console.log(cellvalue);
 								var new_format_value = '<img alt="杂货铺" src="' + cellvalue + '" height=50px></a>'
 								return new_format_value
 							}
@@ -256,7 +262,7 @@
 							formatter : function(cellvalue, options, rowObject) {
 								// do something here
 
-								var new_format_value = '<a id="goodsdetails" href="<%=basePath%>goodsdetails.jsp?goodsname="+cellvalue>'+cellvalue+'</a>'
+								var new_format_value = '<a id="goodsdetails" href="<%=basePath%>goodsdetails.jsp?goodsname='+cellvalue+'">' + cellvalue + '</a>'
 								return new_format_value
 							}
 						},
@@ -293,13 +299,13 @@
 		});
 	</script>
 	<script type="text/javascript">
-	 		$(function() {
-				$('#goodsimg').blur(function() {
+		$(function() {
+			$('#goodsimg').blur(function() {
 				$('#goodsdetails').trigger('click');
-					alert('button is clicking！');
-				});
-				
-			})
+				alert('button is clicking！');
+			});
+	
+		})
 	</script>
 
 </body>

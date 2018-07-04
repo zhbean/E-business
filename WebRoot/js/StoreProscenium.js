@@ -19,8 +19,9 @@ function getcount(a){
 		});
 }
 function Search(){
-	
 	$.ajax({
+		
+
 		type : 'post',
 		async : false,
 		url : "goods?goodsname="+$("#searchtext").val(),
@@ -28,7 +29,7 @@ function Search(){
 		dataType : 'json', //返回数据形式为json
 		success : function(result) {
 			for(var i = 0; i < Object.keys(result).length; i++){
-				$("#"+i).text(result[i].goodsname);
+				$("#serId").append("<li ><a href='goodsdetails.jsp?goodsname="+result[i].goodsname+"' target='_blank' >"+result[i].goodsname+"</a></li>");
 			}
 			}
 			// set the new data
