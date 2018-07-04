@@ -38,10 +38,10 @@ public class OrdersDetail {
 	}
 	public String getOrder_status() {
 		if("0".equals(order_status)){this.order_status="未支付";}
-		else if("1".equals(order_status)){this.order_status="已支付";}
+		else if("1".equals(order_status)){this.order_status="已支付未完成";}
 		else if("2".equals(order_status)){this.order_status="已完成";}
 		else if("3".equals(order_status)){this.order_status="退款";}
-		if("4".equals(order_status)){this.order_status="删除";}
+		else if("4".equals(order_status)){this.order_status="删除";}
 		
 		return order_status;
 	}
@@ -52,6 +52,7 @@ public class OrdersDetail {
 		if("1".equals(express_no)){this.express_no="顺丰快递";}
 		else if("2".equals(express_no)){this.express_no="中通快递";}
 		else if("3".equals(express_no)){this.express_no="圆通快递";}
+		else if("0".equals(express_no)){this.express_no="无";}
 		return express_no;
 	}
 	public void setExpress_no(String express_no) {

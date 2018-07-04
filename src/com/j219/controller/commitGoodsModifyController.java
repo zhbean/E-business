@@ -2,6 +2,7 @@
 
 import java.io.PrintWriter;
 
+
 import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.alibaba.fastjson.JSON;
 import com.j219.dao.AddNewGoodsMapper;
 import com.j219.dao.DeleteGoodsBySpeconMapper;
+import com.j219.dao.MaintainOrdersMapper;
 import com.j219.dao.ModifyGoodsInfMapper;
 
 @Controller
@@ -23,6 +25,8 @@ public class commitGoodsModifyController {
 	private AddNewGoodsMapper addNewGoodsMapper;
 	@Autowired
 	private DeleteGoodsBySpeconMapper deleteGoodsBySpeconMapper;
+	@Autowired
+	private MaintainOrdersMapper maintainOrdersMapper;
 	
 	@RequestMapping("/ModifyGoodsSpec")
 	public void ModifyGoodsSpec(HttpServletRequest req,HttpServletResponse res,String spec_no,Float price,Integer sku){
@@ -96,6 +100,33 @@ public class commitGoodsModifyController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("删除商品失败");
+		}
+	}
+	
+	@RequestMapping("/MaintainOrders")
+	public void MaintainOrder(HttpServletRequest req,HttpServletResponse res,String order_no,Integer order_status){
+		PrintWriter out;
+			try {
+				if("null".equals(order_no)) {
+					
+				}
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		try {
+			maintainOrdersMapper.changeStatus(order_no, order_status);
+			System.out.println("修改订单执行完成");
+			res.setContentType("text/json;charset=UTF-8");
+			out = res.getWriter();
+			out.write(JSON.toJSONString(1));
+//			System.out.print(JSON.toJSONString(1));
+			out.flush();
+			out.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("修改订单失败");
 		}
 	}
 }

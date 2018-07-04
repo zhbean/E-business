@@ -67,9 +67,9 @@
 							商品管理<i></i>
 						</h2>
 						<div class="secondary">
+							<h3 id="ShowGoodsList">商品列表</h3>
 							<h3 id="addGoodsBt">添加商品</h3>
 							<h3 id="modifySku">修改库存</h3>
-							<h3 id="ShowGoodsList">商品列表</h3>
 							<h3 id="ShowDeleteGoodsBt">删除商品</h3>
 						</div>
 					</li>
@@ -79,6 +79,7 @@
 						</h2>
 						<div class="secondary">
 							<h3 id="ShowOrdersList">订单列表</h3>
+							<h3 id="MaintainOrder">管理订单状态</h3>
 						</div>
 					</li>
 					<li>
@@ -121,7 +122,7 @@
 			<button id="BtmodifyGoods" class="btn btn-primary"
 				style="width:200px;height:50px;" onclick="modifyGoodsInf()">修改商品信息</button>
 		</div>
-		<!-- 两个模态框激活按钮 -->
+		<!-- 三个模态框激活按钮 -->
 		<button id="deleteGoodsBt" type="button" class="btn btn-primary"
 			data-toggle="modal" data-target="#DeleteModal">删除商品
 		</button>
@@ -129,6 +130,40 @@
 		<button id="addGoodsModal" type="button" class="btn btn-primary"
 			data-toggle="modal" data-target="#AddModal">添加商品
 		</button>
+		
+		<button id="MaintainOrderModal" type="button" class="btn btn-primary"
+			data-toggle="modal" data-target="#MaintainModal">管理订单状态
+		</button>
+		
+		<!-- 管理订单模态框  -->
+		<div class="modal fade" id="MaintainModal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">请确定以下信息</h4>
+					</div>
+					<div class="modal-body">
+							<input id="Maintain_no" type="text" class="form-control" placeholder="订单号">
+							<select id="Orderstatus_no" class="selectpicker">
+							<option value="2">完成</option>
+							<option value="3">退款</option>
+							<option value="4">删除</option>
+						</select> 
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<button id="MaintainOrderBt" type="button" class="btn btn-primary">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+		
 		<!-- 删除商品模态框  -->
 		<div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog"
 			aria-labelledby="myModalLabel">
@@ -215,6 +250,7 @@
 
 		<script>
 			$("#ShowGoodsList").click(function() {
+			$("#MaintainOrderModal").hide();
 				$("#jqTurn").empty();
 				$("#jqTurn").append('<table id="jqlist"></table><div id="jqGridPager"></div>');
 				$("#jqlist").jqGrid({
@@ -328,6 +364,7 @@
 				$("#sku").hide();
 				$("#deleteGoodsBt").hide();
 				$("#addGoodsModal").hide();
+				$("#MaintainOrderModal").hide();
 				$("#jqTurn").empty();
 				$("#jqTurn").append('<table id="jqlist"></table><div id="jqGridPager"></div>');
 				$("#jqlist").jqGrid({
