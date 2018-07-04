@@ -20,12 +20,10 @@ $(document).ready(function() {
 				$("#myemail").val(result[0].e_mail);
 			}
 			if (result[0].mem_sex != null) {
-				
-				if (result[0].mem_sex == '男') {
-					alert($("#sex-man").val());
+				if (result[0].mem_sex.trim() == '男') {
 					$("input:radio[name='sex']").eq(0).prop("checked",true);
 					$("#sex-man").prop("checked", true);
-				} else if (result[0].mem_sex == '女') {
+				} else if (result[0].mem_sex.trim() == '女') {
 					$("input:radio[name='sex']").eq(1).prop("checked",true);
 					$("#sex-woman").prop("checked", true);
 				} else {
