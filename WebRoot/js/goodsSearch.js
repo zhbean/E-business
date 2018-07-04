@@ -36,8 +36,3 @@ function Search(){
 		});
 
 }
-function  getCartCount(){
-	var a;
-	
-	
-}

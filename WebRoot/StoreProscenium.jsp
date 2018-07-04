@@ -18,8 +18,8 @@
 <!--      导航条登录        -->
 <script type="text/javascript">
 $(document).ready(function(){
-	var username="<%=session.getAttribute("username") %>";
-	var account="<%=session.getAttribute("account") %>";
+	var username="<%=session.getAttribute("username")%>";
+	var account="<%=session.getAttribute("account")%>";
 	$.ajax({
 		type : 'post',
 		async : false,
@@ -38,6 +38,12 @@ $(document).ready(function(){
 	$("#UserLogin").append("<a href=jsp/profile.jsp><span id='user'>欢迎您!"+username+"</span></a>");
 	$("#UserImg").append("<a href=jsp/profile.jsp><img src=image/013.jpg class=img-circle></a>");
 	$("#Userlo").append("<a href=jsp/profile.jsp><h2>"+username+"</h2></a>");
+	$("#dasdx").attr("href","jsp/myorders.jsp");
+	$("#dasdx").attr("target","_blank");
+	$("#tuihouz").attr("href","jsp/myorders.jsp");
+	$("#tuihouz").attr("target","_blank");
+	$("#wodedind").attr("href","jsp/myorders.jsp");
+	$("#wodedind").attr("target","_blank");
 	$("#selord").click(function(){
 	getcount(account);	
 	});
@@ -56,19 +62,44 @@ $(document).ready(function(){
 	else{
 	$("#UserLogin").append("<a href=Login.jsp><span id='user'class='b'>登录/注册</span></a>");
 	$("#UserImg").append("<a href=Login.jsp><img src=image/013.jpg class=img-circle></a>");
-	$("#Userlo").append("<div class=dl-bf ><button class=btn btn-default btn-ms>登录</button></div><div class=dl-br><button class=btn btn-default btn-ms>注册</button></div>");
+	$("#Userlo").append("<div class=dl-bf ><button class=btn btn-default btn-ms id='adessa'>登录</button></div><div class=dl-br><button class=btn btn-default btn-ms id='zhucesda'>注册</button></div>");
 	}
 });
 </script>
 
 <script type="text/javascript">
-$(document).ready(function(){
-	$("#searchtext").bind("change",function(){
-		var a=$("#searchtext").val();
-		Search();
-		
+	$(document).ready(function() {
+		$("#adessa").click(function() {
+			window.location.href = "Login.jsp";
+		});
+		$("#zhucesda").click(function() {
+			window.location.href = "jsp/signup.jsp";
+		});
+		$("#searchtext").bind("change", function() {
+			var a = $("#searchtext").val();
+			$("#serId").empty();
+			Search();
+
+		});
+		$("#searchbutton").click(function() {
+			var goodslist = new Array();
+			$.ajax({
+				type : 'post',
+				async : false,
+				url : "goods?goodsname=" + $("#searchtext").val(),
+				data : {},
+				dataType : 'json', //返回数据形式为json
+				success : function(result) {
+
+					for (var i = 0; i < Object.keys(result).length; i++) {
+						goodslist[i] = result[i].goodsname;
+					}
+				}
+			// set the new data
+			});
+			window.open('goodsSearch.jsp?goodslist='+goodslist);
+		});
 	});
-});
 </script>
 
 <body>
@@ -84,15 +115,18 @@ $(document).ready(function(){
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false" id="selord">我的219杂货铺 <span class="caret"></span></a>
+							aria-expanded="false" id="selord">我的219杂货铺 <span
+								class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="jsp/myorders.jsp" target="_blank">未完成订单<span id="OrderCount"class="b"></span></a></li>
-								<li><a href="jsp/myorders.jsp" target="_blank">退货<span id="TOrderCount"class="b"></span></a></li>
+								<li><a href="Login.jsp" id="dasdx">未完成订单<span
+										id="OrderCount" class="b"></span></a></li>
+								<li><a href="Login.jsp" id="tuihouz">退货<span
+										id="TOrderCount" class="b"></span></a></li>
 								<li><a href="Login.jsp">注销</a></li>
 							</ul></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="jsp/myorders.jsp" target="_blank">我的订单</a></li>
+						<li><a href="Login.jsp" id="wodedind">我的订单</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li id="UserLogin"></li>
@@ -119,19 +153,19 @@ $(document).ready(function(){
 						<div class="form-group ">
 							<div class="col-xs-10">
 								<div class="input-group  sec-t z">
-									
+
 									<a href="#" class="dropdown-toggle sec-t"
 										data-toggle="dropdown" role="button" aria-haspopup="true"
-										aria-expanded="true"
-										><input type="text" id="searchtext" class="form-control "></a>
-										<ul class="dropdown-menu sec-t" id="serId">
-											
-										</ul>
-									
+										aria-expanded="true"><input type="text"
+										id="searchtext" class="form-control "></a>
+									<ul class="dropdown-menu sec-t" id="serId">
+
+									</ul>
+
 								</div>
 							</div>
 
-							<button id="searchbutton"class="btn btn-danger ">
+							<button id="searchbutton" class="btn btn-danger ">
 								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>搜索
 							</button>
 						</div>
@@ -144,40 +178,7 @@ $(document).ready(function(){
 						</button>
 					</div>
 
-					<div class="row sec-dh">
-						<nav class="navbar ">
-						<div class="container-fluid">
 
-							<div class="collapse navbar-collapse"
-								id="bs-example-navbar-collapse-1">
-
-								<ul class="nav navbar-nav navbar-left">
-									<li><a href="MyJsp.jsp" target="_blank">杂货铺会员</a></li>
-								</ul>
-								<ul class="nav navbar-nav navbar-left">
-									<li class="dropdown"><a href="#" class="dropdown-toggle"
-										data-toggle="dropdown" role="button" aria-haspopup="true"
-										aria-expanded="false" >我的219杂货铺 <span class="caret"></span></a>
-										<ul class="dropdown-menu">
-											<li><a href="#" target="_blank">未完成订单<span class="b">0</span></a></li>
-											<li><a href="#" target="_blank">返修退换货<span class="b">0</span></a></li>
-
-											<li role="separator" class="divider"></li>
-											<li><a href="#" target="_blank">我的金币</a></li>
-										</ul></li>
-								</ul>
-								<ul class="nav navbar-nav navbar-left">
-									<li><a href="MyJsp.jsp" target="_blank">订单</a></li>
-								</ul>
-								<ul class="nav navbar-nav navbar-left">
-									<li><a href="MyJsp.jsp" target="_blank"><span
-											class="c">折扣商品</span></a></li>
-								</ul>
-
-							</div>
-						</div>
-						</nav>
-					</div>
 				</div>
 			</div>
 
@@ -185,7 +186,7 @@ $(document).ready(function(){
 		<div class="ce">
 			<div class="fl u">
 				<div class="text-center x">
-					
+
 					<ul class=" list-unstyled">
 
 						<li><a>苹果</a><span>/</span><a>小米</a><span>/</span><a>一加</a></li>
@@ -212,24 +213,37 @@ $(document).ready(function(){
 					<!-- Wrapper for slides -->
 					<div class="carousel-inner" role="listbox">
 						<div class="item active lunbotu">
-							<a href="goodsdetails.jsp?goodsname=小米8" target="_blank"><img src="goodsimg/xiaomi8.jpg"
-								class="lunbotu"></a>
-							<div class="carousel-caption"><h1 class="b">小米8震撼来袭<br><small >使用了晓龙845</small></h1></div>
-						</div>
-						<div class="item lunbotu" >
-							<a href="goodsdetails.jsp?goodsname=伊利纯牛奶" target="_blank"><img src="goodsimg/yilichunniunai.jpg"
-								class="lunbotu"></a>
-							<div class="carousel-caption"><h1 class="b"><small >惊爆价</small>¥30</h1></div>
-						</div>
-						<div class="item lunbotu">
-							<a href="goodsdetails.jsp?goodsname=格力空调" target="_blank"><img src="goodsimg/geilikongtiao.jpg"
-								class="lunbotu"></a>
-							<div class="carousel-caption"><h1 class="b">格力空调，好的选择</h1></div>
+							<a href="goodsdetails.jsp?goodsname=小米8" target="_blank"><img
+								src="goodsimg/xiaomi8.jpg" class="lunbotu"></a>
+							<div class="carousel-caption">
+								<h1 class="b">
+									小米8震撼来袭<br>
+									<small>使用了晓龙845</small>
+								</h1>
+							</div>
 						</div>
 						<div class="item lunbotu">
-							<a href="goodsdetails.jsp?goodsname=一加6" target="_blank"><img src="goodsimg/yijia6.jpg"
-								class="lunbotu"></a>
-							<div class="carousel-caption"><h1 class="b">一加6震撼来袭</h1></div>
+							<a href="goodsdetails.jsp?goodsname=伊利纯牛奶" target="_blank"><img
+								src="goodsimg/yilichunniunai.jpg" class="lunbotu"></a>
+							<div class="carousel-caption">
+								<h1 class="b">
+									<small>惊爆价</small>¥30
+								</h1>
+							</div>
+						</div>
+						<div class="item lunbotu">
+							<a href="goodsdetails.jsp?goodsname=格力空调" target="_blank"><img
+								src="goodsimg/geilikongtiao.jpg" class="lunbotu"></a>
+							<div class="carousel-caption">
+								<h1 class="b">格力空调，好的选择</h1>
+							</div>
+						</div>
+						<div class="item lunbotu">
+							<a href="goodsdetails.jsp?goodsname=一加6" target="_blank"><img
+								src="goodsimg/yijia6.jpg" class="lunbotu"></a>
+							<div class="carousel-caption">
+								<h1 class="b">一加6震撼来袭</h1>
+							</div>
 						</div>
 					</div>
 
@@ -247,17 +261,18 @@ $(document).ready(function(){
 			</div>
 			<div class="gt">
 				<div class="gt-a">
-					<a href="goodsdetails.jsp?goodsname=苹果x" target="_blank"><img src="goodsimg/iphone10.jpg"
-						alt="..." class="img-rounded inadm"></a>
-						
+					<a href="goodsdetails.jsp?goodsname=苹果x" target="_blank"><img
+						src="goodsimg/iphone10.jpg" alt="..." class="img-rounded inadm"></a>
+
 				</div>
 				<div class="gt-a">
-					<a href="goodsdetails.jsp?goodsname=歼20" target="_blank"><img src="goodsimg/jian20.jpg"
-						alt="..." class="img-rounded inadm"></a>
+					<a href="goodsdetails.jsp?goodsname=歼20" target="_blank"><img
+						src="goodsimg/jian20.jpg" alt="..." class="img-rounded inadm"></a>
 				</div>
 				<div class="gt-a">
-					<a href="goodsdetails.jsp?goodsname=95式自动步枪" target="_blank"><img src="goodsimg/95shibuqiang.jpg"
-						alt="..." class="img-rounded inadm"></a>
+					<a href="goodsdetails.jsp?goodsname=95式自动步枪" target="_blank"><img
+						src="goodsimg/95shibuqiang.jpg" alt="..."
+						class="img-rounded inadm"></a>
 				</div>
 			</div>
 			<div class="dlg">
@@ -266,7 +281,7 @@ $(document).ready(function(){
 						<!-- 登录模块图片区 -->
 					</div>
 					<div class="dl-u" id="Userlo">
-					<!-- 登录模块按钮区 -->
+						<!-- 登录模块按钮区 -->
 					</div>
 				</div>
 				<div class="gong">
@@ -277,25 +292,29 @@ $(document).ready(function(){
 					</div>
 					<div class="gong-zhan">
 						<ul id="notice">
-							
+
 						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div class="ds">
-			<div class="ds-title"><h2 class="ds-t">商品总览</h2></div>
+			<div class="ds-title">
+				<h2 class="ds-t">商品总览</h2>
+			</div>
 			<div class="ds-gods">
 				<ul class="list-unstyled list-inline" id="ulgoods">
-					
+
 
 				</ul>
 			</div>
-			<div class="btm"><h1> 已达最底层</h1></div>
+			<div class="btm">
+				<h1>已达最底层</h1>
+			</div>
 		</div>
-		
+
 	</div>
-	
+
 </body>
 
 <script type="text/javascript">
