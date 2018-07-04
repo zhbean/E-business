@@ -198,11 +198,12 @@
 						label : '操作',
 						name : "actions",
 						width : 30,
-						formatter : "actions",
-						formatoptions : {
-							url : "delmyorder?order_no=",
-							delOptions : {}
-						}
+						formatter : function(cellvalue, {rowId: rid}, rowObject) {
+							// do something here
+							console.log(cellvalue)
+							var new_format_value = '<a href="delmyorder?order_no=' + rid + '.jsp"><button type="button" style="width:50px">删除</button></a>'
+							return new_format_value
+						},
 					},
 				// sorttype is used only if the data is loaded locally or loadonce is set to true
 				],
