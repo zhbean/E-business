@@ -3,14 +3,13 @@ $(document).ready(function() {
 	console.log(te);
 	if ("true" == '${upsuccess}') alert("修改成功");
 
-
 	var account = getAccount();
-	//alert(account);
+
 
 	$.ajax({
 		async : false,
 		type : "GET", //临时修改
-		url : "myaddress?account=a", //+account,
+		url : "myaddress?account="+account, //+account,
 		data : {},
 		datatype : "json",
 		success : function(result) {

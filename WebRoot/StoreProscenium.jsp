@@ -35,9 +35,9 @@ $(document).ready(function(){
 		});
 	
 	if(username!="null"&&username!=""){
-	$("#UserLogin").append("<a href=ManagerShopIndex.jsp><span id='user'>欢迎您!"+username+"</span></a>");
-	$("#UserImg").append("<a href=ManagerShopIndex.jsp><img src=image/013.jpg class=img-circle></a>");
-	$("#Userlo").append("<a href=ManagerShopIndex.jsp><h2>"+username+"</h2></a>");
+	$("#UserLogin").append("<a href=jsp/profile.jsp><span id='user'>欢迎您!"+username+"</span></a>");
+	$("#UserImg").append("<a href=jsp/profile.jsp><img src=image/013.jpg class=img-circle></a>");
+	$("#Userlo").append("<a href=jsp/profile.jsp><h2>"+username+"</h2></a>");
 	$("#selord").click(function(){
 	getcount(account);	
 	});
@@ -86,12 +86,13 @@ $(document).ready(function(){
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false" id="selord">我的219杂货铺 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#" target="_blank">未完成订单<span id="OrderCount"class="b"></span></a></li>
-								<li><a href="#" target="_blank">返修退换货<span id="TOrderCount"class="b"></span></a></li>
+								<li><a href="jsp/myorders.jsp" target="_blank">未完成订单<span id="OrderCount"class="b"></span></a></li>
+								<li><a href="jsp/myorders.jsp" target="_blank">退货<span id="TOrderCount"class="b"></span></a></li>
+								<li><a href="Login.jsp">注销</a></li>
 							</ul></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="MyJsp.jsp" target="_blank">我的订单</a></li>
+						<li><a href="jsp/myorders.jsp" target="_blank">我的订单</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li id="UserLogin"></li>
@@ -123,17 +124,8 @@ $(document).ready(function(){
 										data-toggle="dropdown" role="button" aria-haspopup="true"
 										aria-expanded="true"
 										><input type="text" id="searchtext" class="form-control "></a>
-										<ul class="dropdown-menu sec-t" >
-											<li ><a href="#" target="_blank" id="1"></a></li>
-											<li ><a href="#" target="_blank" id="2"></a></li>
-											<li ><a href="#" target="_blank" id="3"></a></li>
-											<li ><a href="#" target="_blank" id="4"></a></li>
-											<li ><a href="#" target="_blank" id="5"></a></li>
-											<li ><a href="#" target="_blank" id="6"></a></li>
-											<li ><a href="#" target="_blank" id="7"></a></li>
-											<li ><a href="#" target="_blank" id="8"></a></li>
-											<li ><a href="#" target="_blank" id="9"></a></li>
-											<li ><a href="#" target="_blank" id="10"></a></li>
+										<ul class="dropdown-menu sec-t" id="serId">
+											
 										</ul>
 									
 								</div>

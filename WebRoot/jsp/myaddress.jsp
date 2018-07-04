@@ -45,7 +45,7 @@
 		style="width:80%;margin-left:150px">
 	<div class="profile-nav container-fluid ">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="StroeProscenium.jsp"> <img
+			<a class="navbar-brand" href="StoreProscenium.jsp"> <img
 				alt="Brand" src="imgs/logo.jpg" height=100%>
 			</a>
 		</div>
@@ -90,7 +90,7 @@
 			</form>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="<%=basePath%>cart.jsp">购物车</a></li>
-				<li><a href="#">注销</a></li>
+				<li><a href="Login.jsp">注销</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Dropdown <span class="caret"></span></a>
